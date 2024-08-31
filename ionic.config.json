@@ -1,0 +1,7 @@
+{
+  "name": "Huzu",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
