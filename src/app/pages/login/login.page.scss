@@ -1,5 +1,16 @@
 ion-content::part(background){
 
-    background: #ffffff;
+    background: #272727;
+
+}
+
+ion-header {
+    display: none;
+  }
+
+ion-label{
+
+    padding-left: 30%;
+    padding-right: 20%;
 
 }
