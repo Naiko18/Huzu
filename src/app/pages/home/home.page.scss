@@ -25,3 +25,13 @@
 #container a {
   text-decoration: none;
 }
+
+ion-content::part(background){
+
+  background: #272727;
+
+}
+
+ion-header {
+  display: none;
+}

@@ -1,7 +1,7 @@
 ion-content::part(background){
 
     background: #272727;
-
+    font-family: "Instagram Sans"
 }
 
 ion-header {
@@ -12,5 +12,12 @@ ion-label{
 
     padding-left: 30%;
     padding-right: 20%;
+
+}
+
+.label1{
+
+    padding-left: 25%;
+    padding-right: auto;
 
 }

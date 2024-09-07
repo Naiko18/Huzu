@@ -8,9 +8,27 @@ import { Router } from '@angular/router';
 })
 export class LoginPage implements OnInit {
 
-  constructor() { }
+  nombre_user: string='';
+  contra_user: string='';
+
+  constructor(private route: Router) { }
 
   ngOnInit() {
   }
 
+  ingresarLogin(){
+
+    if(this.nombre_user == "admin" && this.contra_user == "admin123"){
+        this.route.navigate(['/home'])
+      }else{
+
+        console.log('Contraseña o usuario incorrectos')
+
+      }
+        
+      
+  }
+  
+
 }
+
