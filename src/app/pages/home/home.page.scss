@@ -28,10 +28,20 @@
 
 ion-content::part(background){
 
-  background: #272727;
+  background: #0e0e0e;
 
 }
 
 ion-header {
   display: none;
+}
+
+ion-tab-bar {
+  --background: #0e0e0e; 
+  height: 8%;
+  padding: auto;
+}
+
+ion-tab-bar {
+  --border: none; 
 }

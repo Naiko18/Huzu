@@ -1,9 +1,10 @@
-ion-header {
-    display: none;
-}
-
 ion-content::part(background){
 
     background: #0e0e0e;
   
 }
+
+ion-header {
+    display: none;
+}
+  
