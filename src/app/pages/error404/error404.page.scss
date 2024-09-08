@@ -1,17 +1,10 @@
-ion-content::part(background){
-
-    background: #272727;
-    font-family: "Instagram Sans"
-
-}
-
 ion-header {
     display: none;
-  }
+}
 
 ion-icon {
-    font-size: 60px;
-    padding-left: 42%;
+    font-size: 100px;
+    padding-left: 38%;
     padding-right: 40%;
     box-sizing: border-box;
 }
@@ -20,10 +13,11 @@ ion-card-title{
     text-align: center;
     padding-left: 0%;
     padding-right: 0%;
+    padding-top: 5%;
     box-sizing: border-box;
 }
 
-.parrafo{
+.parra{
 
     text-align: center;
     padding-left: 0%;

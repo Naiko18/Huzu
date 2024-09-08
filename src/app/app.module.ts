@@ -15,6 +15,7 @@ import { AppRoutingModule } from './app-routing.module';
     AppRoutingModule,
     ReactiveFormsModule // Opcional, si usas formularios reactivos en AppModule
     
+    
   ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent]
