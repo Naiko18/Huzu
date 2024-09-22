@@ -22,12 +22,8 @@ export class LoginPage implements OnInit {
     if(this.nombre_user == "admin" && this.contra_user == "admin123"){
         this.route.navigate(['/home'])
       }else{
-
         console.log('Contraseña o usuario incorrectos')
-
-      }
-        
-      
+      } 
   }
 
   

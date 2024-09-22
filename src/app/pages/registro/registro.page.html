@@ -13,17 +13,17 @@
     <ion-card-content>
       <form [formGroup]="usuario" (ngSubmit)="usuario_registrado()">
         <br>
-        <ion-input formControlName="nom_usuario" type="text" fill="solid" label="Nombre de usuario" labelPlacement="floating"></ion-input>
+        <ion-input formControlName="nom_usuario" type="text" fill="outline" label="Nombre de usuario" labelPlacement="floating"></ion-input>
         <br>
-        <ion-input formControlName="contraseña" type="password" fill="solid" label="Contraseña" labelPlacement="floating"></ion-input>
+        <ion-input formControlName="contraseña" type="password" fill="outline" label="Contraseña" labelPlacement="floating"></ion-input>
         <br>
-        <ion-input formControlName="correo" type="email" fill="solid" label="Correo" labelPlacement="floating"></ion-input>
+        <ion-input formControlName="correo" type="email" fill="outline" label="Correo" labelPlacement="floating"></ion-input>
         <br>
-        <ion-input formControlName="rut" type="text" fill="solid" label="Rut" labelPlacement="floating"></ion-input>
+        <ion-input formControlName="rut" type="text" fill="outline" label="Rut" labelPlacement="floating"></ion-input>
         <br>
-        <ion-input formControlName="fec_nacimiento" type="date" fill="solid" label="Fecha de nacimiento" labelPlacement="floating"></ion-input>
+        <ion-input formControlName="fec_nacimiento" type="date" fill="outline" label="Fecha de nacimiento" labelPlacement="floating"></ion-input>
         <br>
-        <ion-select formControlName="genero" fill="solid" label="Genero" labelPlacement="floating">
+        <ion-select formControlName="genero" fill="outline" label="Genero" labelPlacement="floating">
           <ion-select-option value="masculino">Masculino</ion-select-option>
           <ion-select-option value="femenino">Femenino</ion-select-option>
           <ion-select-option value="no-binario">No-binario</ion-select-option>
@@ -34,7 +34,8 @@
         <ion-label><a routerLink="/login">¿Ya tienes cuenta?</a></ion-label>
         <br>
         <br>
-        <ion-button type="submit" color="dark" expand="block"> Registrarse </ion-button>
+        <ion-button id="present-alert" type="submit" color="dark" expand="block"> Registrarse </ion-button>
+        <ion-alert trigger="present-alert" header="Alerta" message="Usuario registrado con exito" [buttons]="alertButtons"></ion-alert>
       </form>
     </ion-card-content>
   </ion-card>

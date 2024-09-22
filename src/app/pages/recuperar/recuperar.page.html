@@ -24,8 +24,14 @@
         <ion-input formControlName="email" type="email" fill="solid" label="Ingrese su correo" labelPlacement="floating"></ion-input>     
         <br>
         <br>
-        <ion-button color="dark" expand="block"> Ingresar </ion-button>
+        <ion-button id="present-alert" color="dark" expand="block"> Ingresar </ion-button>
+        <ion-alert trigger="present-alert" header="Alerta" message="Se ha enviado un enlace para recuperar su cuenta a su correo" [buttons]="alertButtons"></ion-alert>
       </form>
+        <br>
+        <br>
+        <ion-label><a routerLink="/login">¿Ya tienes cuenta?</a></ion-label>
+        <br>
+        <br>
       </ion-card-content>
   </ion-card>
   

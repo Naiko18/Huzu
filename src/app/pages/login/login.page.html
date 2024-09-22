@@ -4,20 +4,18 @@
   </ion-toolbar>
 </ion-header>
 <ion-content>
-  <br>
-  <br>
   <ion-card>
     <ion-card-header>
       <ion-img src="assets/huzu.png" style="display: block; margin: 0 auto; width: 50px; height: 50px; object-fit: cover; border-radius: 5px;"></ion-img>
     </ion-card-header>
       <ion-card-content >
           <br>
-          <ion-input [(ngModel)]="nombre_user" type="text" fill="solid" label="Nombre de usuario" labelPlacement="floating"></ion-input>
+          <ion-input [(ngModel)]="nombre_user" type="text" fill="outline" label="Nombre de usuario" labelPlacement="floating"></ion-input>
           <br>
-          <ion-input [(ngModel)]="contra_user" type="password" fill="solid" label="Contraseña" labelPlacement="floating"></ion-input>     
+          <ion-input [(ngModel)]="contra_user" type="password" fill="outline" label="Contraseña" labelPlacement="floating"></ion-input>     
           <br>
           <br>
-          <ion-button (click)="ingresarLogin()" color="dark" expand="block"> Ingresar </ion-button>
+          <ion-button (click)="ingresarLogin()" color="dark" expand="block"> Ingresar </ion-button>   
       </ion-card-content>
   </ion-card>
 
@@ -34,6 +32,4 @@
     <br>
     <br>
   </ion-card>
-  <br>
-  <br>
 </ion-content>

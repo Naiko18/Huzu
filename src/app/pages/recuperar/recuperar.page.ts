@@ -8,11 +8,15 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class RecuperarPage implements OnInit {
 
+  alertButtons = ['Action'];
+
   recuperar = new FormGroup({
   
     email: new FormControl('',[Validators.required, Validators.email])
 
   });
+
+  
 
   constructor() { }
 

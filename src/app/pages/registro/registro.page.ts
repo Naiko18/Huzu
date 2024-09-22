@@ -10,6 +10,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 })
 export class RegistroPage implements OnInit {
 
+  alertButtons = ['Action'];
+
   usuario = new FormGroup({
   
     nom_usuario: new FormControl('',[Validators.required,Validators.pattern("[a-z]{3,10}")]),
@@ -18,6 +20,7 @@ export class RegistroPage implements OnInit {
     rut: new FormControl('',[Validators.required,Validators.pattern("[0-9]{7,8}-[0-9kK]{1}")]),
     fec_nacimiento: new FormControl('',[Validators.required]),
     genero: new FormControl('',[Validators.required]),
+    
 
   });
 
