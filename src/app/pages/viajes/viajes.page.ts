@@ -9,6 +9,7 @@ export class ViajesPage implements OnInit {
   
   mensajeBienvenida: string | undefined;
 
+  
   constructor() { }
 
   ngOnInit() {
@@ -26,4 +27,10 @@ export class ViajesPage implements OnInit {
       return 'Buenas noches';
     }
   }
+
+  tomarViaje(viajeId: number) {
+    
+    console.log(`Viaje ${viajeId} tomado`);
+  }
+
 }

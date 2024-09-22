@@ -12,4 +12,8 @@ export class PerfilPage implements OnInit {
   ngOnInit() {
   }
 
+  verMas() {
+    console.log('Ver más detalles del usuario');
+    // Aquí puedes añadir la navegación o mostrar más información
+  }
 }

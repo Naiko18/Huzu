@@ -1,27 +1,95 @@
-<ion-header >
+<ion-header>
   <ion-toolbar>
-    <ion-title>viajes</ion-title>
+    <ion-title>Viajes</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <ion-card>
-    <br>
-    <ion-label>
+    <ion-card-content>
       <h2>{{ mensajeBienvenida }}</h2>
-    </ion-label>
-    <br>
+    </ion-card-content>
   </ion-card>
-  
-  <br>
-  <br>
+
   <br>
 
   <ion-card>
-
-    
-
+    <ion-card-header>
+      <ion-card-title>
+        <ion-icon name="car" slot="start" size="large"></ion-icon>
+        Viaje 1
+      </ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <div class="viaje-info">
+        <p><strong>Asientos Disponibles:</strong> 3</p>
+        <p><strong>Patente:</strong> PT CL 21</p>
+        <p><strong>Costo por Persona:</strong> $3,000</p>
+        <p><strong>Comuna:</strong> La Florida</p>
+      </div>
+      <ion-button color="dark" expand="block" (click)="tomarViaje(1)">
+        Tomar Viaje
+      </ion-button>
+    </ion-card-content>
   </ion-card>
 
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>
+        <ion-icon name="car" slot="start" size="large"></ion-icon>
+        Viaje 2
+      </ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <div class="viaje-info">
+        <p><strong>Asientos Disponibles:</strong> 2</p>
+        <p><strong>Patente:</strong> XD XD 25</p>
+        <p><strong>Costo por Persona:</strong> $5,000</p>
+        <p><strong>Comuna:</strong> San Bernardo</p>
+      </div>
+      <ion-button color="dark" expand="block" (click)="tomarViaje(2)">
+        Tomar Viaje
+      </ion-button>
+    </ion-card-content>
+  </ion-card>
 
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>
+        <ion-icon name="car" slot="start" size="large"></ion-icon>
+        Viaje 3
+      </ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <div class="viaje-info">
+        <p><strong>Asientos Disponibles:</strong> 1</p>
+        <p><strong>Patente:</strong> SD ER 33</p>
+        <p><strong>Costo por Persona:</strong> $3,500</p>
+        <p><strong>Comuna:</strong> El Bosque</p>
+      </div>
+      <ion-button color="dark" expand="block" (click)="tomarViaje(3)">
+        Tomar Viaje
+      </ion-button>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>
+        <ion-icon name="car" slot="start" size="large"></ion-icon>
+        Viaje 4
+      </ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <div class="viaje-info">
+        <p><strong>Asientos Disponibles:</strong> 4</p>
+        <p><strong>Patente:</strong> XF TL 15</p>
+        <p><strong>Costo por Persona:</strong> $3,000</p>
+        <p><strong>Comuna:</strong> La Pintana</p>
+      </div>
+      <ion-button color="dark" expand="block" (click)="tomarViaje(4)">
+        Tomar Viaje
+      </ion-button>
+    </ion-card-content>
+  </ion-card>
 </ion-content>

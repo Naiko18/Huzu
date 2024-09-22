@@ -8,9 +8,29 @@ ion-header {
     display: none;
   }
 
-ion-label{
+.labellink{
 
     padding-left: 35%;
     padding-right: 30%;
 
 }
+
+ion-item {
+    --padding-start: 0; /* Eliminar padding a la izquierda para ajustar */
+  }
+  
+  ion-label {
+    font-size: 15px; /* Ajustar el tamaño de la fuente */
+    color: #a1a1a1; /* Color gris claro */
+    text-align: left; /* Alinear a la izquierda */
+  }
+  
+  ion-radio {
+    margin-left: 10px; /* Espacio entre radio button y label */
+  }
+  
+  ion-radio-group {
+    display: flex;
+    flex-direction: column; /* Para apilar verticalmente */
+  }
+

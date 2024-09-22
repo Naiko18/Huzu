@@ -30,8 +30,25 @@
           <ion-select-option value="otro">Otro</ion-select-option>
         </ion-select>
         <br>
+        
+        <ion-list>
+          <ion-label>¿Posee vehículo?</ion-label>
+          <ion-radio-group formControlName="pos_vehiculo" (ionChange)="onVehiculoChange($event.detail.value)">
+            <ion-item *ngFor="let option of vehiculoOptions">
+              <ion-radio [value]="option.value"></ion-radio>
+              <ion-label>{{ option.label }}</ion-label>
+            </ion-item>
+          </ion-radio-group>
+        </ion-list>
+        
         <br>
-        <ion-label><a routerLink="/login">¿Ya tienes cuenta?</a></ion-label>
+        <ng-container *ngIf="tieneVehiculo">
+          <ion-input formControlName="patente" type="text" fill="outline" label="Patente" labelPlacement="floating"></ion-input>
+          <br>
+          <ion-input formControlName="cantidad_asientos" type="number" fill="outline" label="Cantidad de Asientos" labelPlacement="floating"></ion-input>
+        </ng-container>
+        <br>
+        <ion-label class="labellink"><a routerLink="/login">¿Ya tienes cuenta?</a></ion-label>
         <br>
         <br>
         <ion-button id="present-alert" type="submit" color="dark" expand="block"> Registrarse </ion-button>
