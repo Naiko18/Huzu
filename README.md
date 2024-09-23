@@ -17,18 +17,18 @@ Huzu es una innovadora aplicación de transporte diseñada exclusivamente para l
    ```bash
    git clone https://github.com/Naiko18/Huzu.git
 
-1. **Dirígete hacía el directorio correspondiente** 
+1. **Dirígete hacía el directorio correspondiente.** 
    ```bash
    cd Huzu/
 
-3.  **Instala los archivos requeridos del proyecto** 
+3.  **Instala los archivos requeridos del proyecto.** 
     ```bash 
     npm install
 
-4.  **Abre el proyecto en visual studio** 
+4.  **Abre el proyecto en visual studio.** 
     ```bash 
     code .
 
-5.  **Ejecuta el proyecto** 
+5.  **Ejecuta el proyecto.** 
     ```bash 
     ionic serve
