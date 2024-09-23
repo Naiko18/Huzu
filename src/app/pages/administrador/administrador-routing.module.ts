@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { AdministradorPage } from './administrador.page';
 
+
 const routes: Routes = [
   {
     path: '',
