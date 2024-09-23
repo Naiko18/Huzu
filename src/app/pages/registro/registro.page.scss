@@ -16,21 +16,21 @@ ion-header {
 }
 
 ion-item {
-    --padding-start: 0; /* Eliminar padding a la izquierda para ajustar */
+    --padding-start: 0;
   }
   
   ion-label {
-    font-size: 15px; /* Ajustar el tamaño de la fuente */
-    color: #a1a1a1; /* Color gris claro */
-    text-align: left; /* Alinear a la izquierda */
+    font-size: 15px; 
+    color: #a1a1a1;
+    text-align: left; 
   }
   
   ion-radio {
-    margin-left: 10px; /* Espacio entre radio button y label */
+    margin-left: 10px; 
   }
   
   ion-radio-group {
     display: flex;
-    flex-direction: column; /* Para apilar verticalmente */
+    flex-direction: column;
   }
 
