@@ -5,7 +5,7 @@ Huzu es una innovadora aplicación de transporte diseñada exclusivamente para l
 
 ---
 
-## Instalación
+## Instrucciones
 
 - Requerimientos para instalación
 
