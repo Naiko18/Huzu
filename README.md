@@ -1,7 +1,7 @@
 # 🚗 Huzu App
 
 ## Descripción
-Huzu es una aplicación de transporte exclusiva para estudiantes de Duoc UC, con ella podrás llegar seguro/a a tu destino.
+Huzu es una innovadora aplicación de transporte diseñada exclusivamente para los estudiantes de Duoc UC, ofreciéndoles una opción confiable, cómoda y segura para desplazarse hacia sus destinos. Con Huzu, no solo disfrutarás de un viaje más seguro/a, sino que también te unirás a una comunidad de usuarios que comparten tu mismo compromiso con la puntualidad y la seguridad. Nuestra plataforma está pensada para facilitar tu vida estudiantil, permitiéndote conectarte fácilmente con otros compañeros y organizar tu trayecto de manera eficiente. ¡Viajar nunca fue tan sencillo y seguro como ahora con Huzu!
 
 ---
 
