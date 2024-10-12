@@ -5,6 +5,66 @@
 </ion-header>
 
 <ion-content>
+  <ion-card>
+    <ion-card-content>
+      <form [formGroup]="usuario">
+        <br>
+        <ion-input formControlName="nom_usuario" type="text" fill="outline" label="Nombre de usuario" labelPlacement="floating"></ion-input>
+        <br>
+        <ion-input formControlName="contraseña" type="password" fill="outline" label="Contraseña" labelPlacement="floating"></ion-input>
+        <br>
+        <ion-input formControlName="correo" type="email" fill="outline" label="Correo" labelPlacement="floating"></ion-input>
+        <br>
+        <ion-input formControlName="rut" type="text" fill="outline" label="Rut" labelPlacement="floating"></ion-input>
+        <br>
+        <ion-input formControlName="fec_nacimiento" type="date" fill="outline" label="Fecha de nacimiento" labelPlacement="floating"></ion-input>
+        <br>
+        <ion-select formControlName="genero" fill="outline" label="Genero" labelPlacement="floating">
+          <ion-select-option value="masculino">Masculino</ion-select-option>
+          <ion-select-option value="femenino">Femenino</ion-select-option>
+          <ion-select-option value="no-binario">No-binario</ion-select-option>
+          <ion-select-option value="otro">Otro</ion-select-option>
+        </ion-select>
+        <br>
 
+        <ion-list>
+          <ion-label>¿Posee vehículo?</ion-label>
+          <ion-radio-group formControlName="pos_vehiculo" (ionChange)="onVehiculoChange($event.detail.value)">
+            <ion-item *ngFor="let option of vehiculoOptions">
+              <ion-radio [value]="option.value"></ion-radio>
+              <ion-label>{{ option.label }}</ion-label>
+            </ion-item>
+          </ion-radio-group>
+        </ion-list>
+
+        <br>
+        <ng-container *ngIf="tieneVehiculo">
+          <ion-input formControlName="patente" type="text" fill="outline" label="Patente" labelPlacement="floating"></ion-input>
+          <br>
+          <ion-input formControlName="cantidad_asientos" type="number" fill="outline" label="Cantidad de Asientos" labelPlacement="floating"></ion-input>
+        </ng-container>
+        <br>
+        <ion-button (click)="agregarUsuario()" color="dark" expand="block">Agregar Usuario</ion-button>
+        <ion-button *ngIf="isEditing" (click)="confirmEdit()" color="light" expand="block">Confirmar Cambios</ion-button>
+      </form>
+    </ion-card-content>
+  </ion-card>
   
+  <ion-card *ngFor="let usuario of usuarios">
+    <ion-card-header>
+      <ion-card-title>{{ usuario.get('nom_usuario')?.value }} ({{ usuario.get('rut')?.value }})</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p><strong>Correo:</strong> {{ usuario.get('correo')?.value }}</p>
+      <p><strong>Fecha de Nacimiento:</strong> {{ usuario.get('fec_nacimiento')?.value }}</p>
+      <p><strong>Género:</strong> {{ usuario.get('genero')?.value }}</p>
+      <p><strong>Posee Vehículo:</strong> {{ usuario.get('pos_vehiculo')?.value }}</p>
+      <p *ngIf="usuario.get('pos_vehiculo')?.value === 'Sí'">
+        <strong>Patente:</strong> {{ usuario.get('patente')?.value }}<br>
+        <strong>Cantidad de Asientos:</strong> {{ usuario.get('cantidad_asientos')?.value }}
+      </p>
+      <ion-button (click)="editUsuario(usuario)" color="light">Editar</ion-button>
+      <ion-button (click)="deleteUsuario(usuario.get('rut')?.value)" color="dark">Eliminar</ion-button>
+    </ion-card-content>
+  </ion-card>
 </ion-content>
