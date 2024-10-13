@@ -5,36 +5,77 @@
 </ion-header>
 
 <ion-content >
-  <br>
-  <br>
   
-  <ion-card>
-      <ion-card-content>
-        <form [formGroup]="recuperar">
-        <br>
-        <br>
-        <ion-card-title>¿Problemas con el inicio de sesión?</ion-card-title>
-        <br>
-        <ion-icon name="sad-sharp"></ion-icon>
-        <br>
-        <ion-card-content class="parrafo">
-          Ingresa tu correo electronico y te enviaremos un enlace con los pasos necesarios para recuperar tu cuenta.
-        </ion-card-content>
-        <br>
+  <div class="container">
+
+    <div class="rectangulo">
+      <style>
+        .rectangulo {
+            width: 100vw; 
+            height: 90vh; 
+            border-radius: 5% 5% 0 0;
+            margin: 0; 
+            display: block; 
+            flex-direction: column;
+            background-color: white;
+            padding: 50px; 
+            box-sizing: border-box; 
+            overflow-y: auto;
+        }
+        
+        .container {
+            display: flex; 
+            flex-direction: column;
+            justify-content: flex-end; 
+            align-items: stretch;
+            width: 100%; 
+            height: 100%;
+            text-align: center; 
+        }
+
+        .titulo {
+            font-size: 24px; 
+            font-weight: bold; 
+            margin-bottom: 10px; 
+        }
+
+        .subtitulo {
+            font-size: 16px; 
+            margin-bottom: 30px; 
+            color: gray; 
+        }
+
+        ion-input {
+            --border-radius: 20px; 
+            --padding-start: 10px; 
+            --padding-end: 10px; 
+            --background: white; 
+        }
+
+        ion-label{
+
+          text-align: center;
+          display: block; 
+        }
+      </style>
+      <div class="titulo">¿Problemas con el inicio de sesión?</div>
+      <div class="subtitulo">Ingresa tu correo electronico y te enviaremos un enlace con los pasos necesarios para recuperar tu cuenta.</div>
+      <br>
+      <form [formGroup]="recuperar">
         <ion-input formControlName="email" type="email" fill="solid" label="Ingrese su correo" labelPlacement="floating"></ion-input>     
         <br>
         <br>
         <ion-button id="present-alert" color="dark" expand="block"> Recuperar </ion-button>
         <ion-alert trigger="present-alert" header="Alerta" message="Se ha enviado un enlace para recuperar su cuenta a su correo" [buttons]="alertButtons"></ion-alert>
       </form>
-        <br>
-        <br>
-        <ion-label><a routerLink="/login">¿Ya tienes cuenta?</a></ion-label>
-        <br>
-        <br>
-      </ion-card-content>
-  </ion-card>
-  
-  <br>
-  <br>
+      <br>
+      <br>
+      <ion-label><a routerLink="/login">Si ya tienes una cuenta, haz click aquí</a></ion-label>
+    </div>
+  </div>
+
+
+
 </ion-content>
+
+

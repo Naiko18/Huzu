@@ -11,7 +11,7 @@
         .rectangulo {
             width: 100vw; 
             height: 90vh; 
-            border-radius: 20% 5% 0 0;
+            border-radius: 5% 5% 0 0;
             margin: 0; 
             display: block; 
             background-color: white;
@@ -93,7 +93,7 @@
           <ion-input formControlName="mod_vehi" type="text" fill="outline" label="Modelo Vehículo" labelPlacement="floating"></ion-input>        
         </ng-container>
         <br>
-        <ion-button id="present-alert" type="submit" color="dark" expand="block"> Registrarse </ion-button>
+        <ion-button (click)="agregarUsuario()" id="present-alert" type="submit" color="dark" expand="block"> Registrarse </ion-button>
         <ion-alert message="Te has registrado con exito" [buttons]="alertButtons"></ion-alert>
       </form>
     </div>

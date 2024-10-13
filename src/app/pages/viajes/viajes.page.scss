@@ -4,7 +4,7 @@ ion-header {
 
 ion-content::part(background){
 
-    background: #ffffff;
+    background: #1c2120;
   
 }ion-label{
 
@@ -16,15 +16,3 @@ ion-content::part(background){
 
 }
 
-.mensajeInicio{
-    padding-top: 3%;
-}
-
-.mensaje{
-    display: block;
-    text-align: center;
-    padding: 3%;
-    font-size: 20px;
-    background-color: #1c2120;
-    color: #ffffff;
-}

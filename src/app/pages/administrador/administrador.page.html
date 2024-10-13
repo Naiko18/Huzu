@@ -60,6 +60,14 @@
           <ion-input formControlName="mod_vehi" type="text" fill="outline" label="Modelo Vehículo" labelPlacement="floating"></ion-input>
         </ng-container>
         <br>
+
+        <ion-select formControlName="tip_user" fill="outline" label="Tipo usuario" labelPlacement="floating">
+          <ion-select-option value="administrador">Administrador</ion-select-option>
+          <ion-select-option value="pasajero">Pasajero</ion-select-option>
+          <ion-select-option value="conductor">Conductor</ion-select-option>
+        </ion-select>
+
+        <br>
         <ion-button (click)="agregarUsuario()" color="dark" expand="block">Agregar Usuario</ion-button>
         <ion-button *ngIf="isEditing" (click)="confirmEdit()" color="light" expand="block">Confirmar Cambios</ion-button>
       </form>
@@ -71,6 +79,7 @@
       <ion-card-title>{{ usuario.get('nom_usuario')?.value }} ({{ usuario.get('rut')?.value }})</ion-card-title>
     </ion-card-header>
     <ion-card-content>
+      <p><strong>Tipo usuario:</strong>{{ usuario.get('tip_user')?.value }}</p>
       <p><strong>Correo:</strong> {{ usuario.get('correo')?.value }}</p>
       <p><strong>Fecha de Nacimiento:</strong> {{ usuario.get('fec_nacimiento')?.value }}</p>
       <p><strong>Género:</strong> {{ usuario.get('genero')?.value }}</p>
@@ -78,6 +87,7 @@
       <p *ngIf="usuario.get('pos_vehiculo')?.value === 'Sí'">
         <strong>Patente:</strong> {{ usuario.get('patente')?.value }}<br>
         <strong>Cantidad de Asientos:</strong> {{ usuario.get('cantidad_asientos')?.value }}
+        <strong>Modelo Vehiculo:</strong> {{usuario.get('mod_vehi')?.value}} 
       </p>
       <ion-button (click)="editUsuario(usuario)" color="light">Editar</ion-button>
       <ion-button (click)="deleteUsuario(usuario.get('rut')?.value)" color="dark">Eliminar</ion-button>

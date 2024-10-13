@@ -1,6 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { UsuarioService } from 'src/app/services/usuario.service';
+import { AbstractControl, ValidationErrors } from '@angular/forms';
+
+export function mayorDeEdadValidator(control: AbstractControl): ValidationErrors | null {
+  const fechaNacimiento = new Date(control.value);
+  const year2024 = new Date('2024-01-01');
+
+  const edad = year2024.getFullYear() - fechaNacimiento.getFullYear();
+  const diferenciaMes = year2024.getMonth() - fechaNacimiento.getMonth();
+  const diferenciaDia = year2024.getDate() - fechaNacimiento.getDate();
+
+  return edad >= 18 ? null : { menorDeEdad: true };
+
+}
 
 @Component({
   selector: 'app-administrador',
@@ -24,12 +37,13 @@ export class AdministradorPage implements OnInit {
       rep_contraseña: new FormControl('',[Validators.required, Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,}$/)]),
       correo: new FormControl('',[Validators.required, Validators.email, Validators.pattern("[a-zA-Z0-9._%+-]+@duocuc.cl")]),
       rut: new FormControl('',[Validators.required,Validators.pattern("[0-9]{7,8}-[0-9kK]{1}")]),
-      fec_nacimiento: new FormControl('',[Validators.required]),
+      fec_nacimiento: new FormControl('',[Validators.required, mayorDeEdadValidator]),
       genero: new FormControl('',[Validators.required]),
       pos_vehiculo: new FormControl('',[]),
       patente: new FormControl('',[Validators.pattern(/^[A-Z]{2} [A-Z]{2} \d{1,}$/)]),  
       cantidad_asientos: new FormControl('',[]),
-      mod_vehi: new FormControl('',[])  
+      mod_vehi: new FormControl('',[]),  
+      tip_user: new FormControl('',[Validators.required])
     });
   }
 
