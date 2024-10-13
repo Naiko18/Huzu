@@ -5,17 +5,63 @@
 </ion-header>
 
 <ion-content >
-  <ion-card>
-    <ion-card-header>
-      <ion-img src="assets/huzu.png" style="display: block; margin: 0 auto; width: 50px; height: 50px; object-fit: cover; border-radius: 5px;"></ion-img>
-    </ion-card-header>
-  
-    <ion-card-content>
+  <div class="container">
+    <div class="rectangulo">
+      <style>
+        .rectangulo {
+            width: 100vw; 
+            height: 90vh; 
+            border-radius: 20% 5% 0 0;
+            margin: 0; 
+            display: block; 
+            background-color: white;
+            flex-direction: column;
+            padding: 60px; 
+            box-sizing: border-box; 
+            overflow-y: auto;
+        }
+        
+        .container {
+            display: flex; 
+            flex-direction: column;
+            justify-content: flex-end; 
+            align-items: stretch;
+            width: 100%; 
+            height: 100%;
+            text-align: center; 
+        }
+
+        .titulo {
+            font-size: 24px; 
+            font-weight: bold; 
+            margin-bottom: 10px; 
+        }
+
+        .link {
+            font-size: 16px; 
+            margin-bottom: 30px; 
+            color: gray; 
+        }
+
+        ion-input {
+            --border-radius: 20px; 
+            --padding-start: 10px; 
+            --padding-end: 10px; 
+            --background: white; 
+        }
+      </style>
+
+      <div class="titulo">¡CREA UNA CUENTA NUEVA!</div>
+      <ion-label class="link"><a routerLink="/login">¿Ya tienes cuenta?</a></ion-label>
+      <br>
+      <br>
       <form [formGroup]="usuario" (ngSubmit)="usuario_registrado()">
-        <br>
+       
         <ion-input formControlName="nom_usuario" type="text" fill="outline" label="Nombre de usuario" labelPlacement="floating"></ion-input>
         <br>
         <ion-input formControlName="contraseña" type="password" fill="outline" label="Contraseña" labelPlacement="floating"></ion-input>
+        <br>
+        <ion-input formControlName="rep_contraseña" type="password" fill="outline" label="Repetir Contraseña" labelPlacement="floating"></ion-input>
         <br>
         <ion-input formControlName="correo" type="email" fill="outline" label="Correo" labelPlacement="floating"></ion-input>
         <br>
@@ -26,11 +72,9 @@
         <ion-select formControlName="genero" fill="outline" label="Genero" labelPlacement="floating">
           <ion-select-option value="masculino">Masculino</ion-select-option>
           <ion-select-option value="femenino">Femenino</ion-select-option>
-          <ion-select-option value="no-binario">No-binario</ion-select-option>
           <ion-select-option value="otro">Otro</ion-select-option>
         </ion-select>
         <br>
-        
         <ion-list>
           <ion-label>¿Posee vehículo?</ion-label>
           <ion-radio-group formControlName="pos_vehiculo" (ionChange)="onVehiculoChange($event.detail.value)">
@@ -40,21 +84,19 @@
             </ion-item>
           </ion-radio-group>
         </ion-list>
-        
         <br>
         <ng-container *ngIf="tieneVehiculo">
           <ion-input formControlName="patente" type="text" fill="outline" label="Patente" labelPlacement="floating"></ion-input>
           <br>
           <ion-input formControlName="cantidad_asientos" type="number" fill="outline" label="Cantidad de Asientos" labelPlacement="floating"></ion-input>
+          <br>
+          <ion-input formControlName="mod_vehi" type="text" fill="outline" label="Modelo Vehículo" labelPlacement="floating"></ion-input>        
         </ng-container>
         <br>
-        <ion-label class="labellink"><a routerLink="/login">¿Ya tienes cuenta?</a></ion-label>
-        <br>
-        <br>
         <ion-button id="present-alert" type="submit" color="dark" expand="block"> Registrarse </ion-button>
-        <ion-alert trigger="present-alert" header="Alerta" message="Usuario registrado con exito" [buttons]="alertButtons"></ion-alert>
+        <ion-alert message="Te has registrado con exito" [buttons]="alertButtons"></ion-alert>
       </form>
-    </ion-card-content>
-  </ion-card>
+    </div>
+  </div>
   
 </ion-content>

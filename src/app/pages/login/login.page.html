@@ -3,33 +3,71 @@
     <ion-title>Huzu</ion-title>
   </ion-toolbar>
 </ion-header>
+
 <ion-content>
-  <ion-card>
-    <ion-card-header>
-      <ion-img src="assets/huzu.png" style="display: block; margin: 0 auto; width: 50px; height: 50px; object-fit: cover; border-radius: 5px;"></ion-img>
-    </ion-card-header>
-      <ion-card-content >
-          <br>
-          <ion-input [(ngModel)]="nombre_user" type="text" fill="outline" label="Nombre de usuario" labelPlacement="floating"></ion-input>
-          <br>
-          <ion-input [(ngModel)]="contra_user" type="password" fill="outline" label="Contraseña" labelPlacement="floating"></ion-input>     
-          <br>
-          <br>
-          <ion-button (click)="ingresarLogin()" color="dark" expand="block"> Ingresar </ion-button>   
-      </ion-card-content>
-  </ion-card>
 
-  <ion-card>
-    <br>
-    <ion-label class="label1"><a routerLink="/registro">¿No tienes cuenta? Registrate aquí </a></ion-label>
-    <br>
-    <br>
-  </ion-card>
+  <div class="container">
 
-  <ion-card>
-    <br>
-    <ion-label><a routerLink="/recuperar">¿Olvidaste tú contraseña?</a></ion-label>
-    <br>
-    <br>
-  </ion-card>
+    <ion-img src="assets/huzu.png"></ion-img>
+
+    <div class="rectangulo">
+      <style>
+        .rectangulo {
+            width: 100vw; 
+            height: 70vh; 
+            border-radius: 2% 20% 0 0;
+            margin: 0; 
+            display: block; 
+            flex-direction: column;
+            background-color: white;
+            padding: 60px; 
+            box-sizing: border-box; 
+            overflow-y: auto;
+        }
+        
+        .container {
+            display: flex; 
+            flex-direction: column;
+            justify-content: flex-end; 
+            align-items: stretch;
+            width: 100%; 
+            height: 100%;
+            text-align: center; 
+        }
+
+        .titulo {
+            font-size: 24px; 
+            font-weight: bold; 
+            margin-bottom: 10px; 
+        }
+
+        .subtitulo {
+            font-size: 16px; 
+            margin-bottom: 30px; 
+            color: gray; 
+        }
+
+        ion-input {
+            --border-radius: 20px; 
+            --padding-start: 10px; 
+            --padding-end: 10px; 
+            --background: white; 
+        }
+      </style>
+
+      <div class="titulo">INICIAR SESIÓN</div>
+      <div class="subtitulo">Inicie sesión para continuar</div>
+
+      <ion-input [(ngModel)]="nombre_user" type="text" fill="outline" label="Usuario" labelPlacement="floating"></ion-input>
+      <br>
+      <ion-input [(ngModel)]="contra_user" type="password" fill="outline" label="Contraseña" labelPlacement="floating"></ion-input>     
+      <br>
+      <br>
+      <ion-button (click)="ingresarLogin()" color="dark" expand="block"> Ingresar </ion-button>   
+      <br>
+      <ion-label class="label1"><a routerLink="/registro">¿No tienes cuenta? Regístrate aquí</a></ion-label>
+      <br>
+      <ion-label class="label1"><a routerLink="/recuperar">¿Olvidaste tu contraseña?</a></ion-label>
+    </div>
+  </div>
 </ion-content>

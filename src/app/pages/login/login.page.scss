@@ -1,23 +1,36 @@
 ion-content::part(background){
 
-    background: #272727;
+    background: #1c2120;
     font-family: "Instagram Sans"
+}
+
+.logo {
+    text-align: center;
+    display: block;
+    margin: 0 auto; 
+    max-width: 100%; 
+    height: auto; 
 }
 
 ion-header {
     display: none;
   }
 
-ion-label{
-
-    padding-left: 30%;
-    padding-right: 20%;
-
-}
 
 .label1{
 
-    padding-left: 25%;
-    padding-right: auto;
+    text-align: center;
+    display: block;
 
+}
+
+ion-img{
+    width: 50%; 
+    height: auto;
+    object-fit: cover; 
+    border-radius: 50%;
+    margin-bottom: 20px;
+    display: block; 
+    margin-left: auto;
+    margin-right: auto; 
 }

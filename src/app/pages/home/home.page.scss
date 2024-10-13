@@ -17,7 +17,7 @@
   font-size: 16px;
   line-height: 22px;
 
-  color: #8c8c8c;
+  color: #000000;
 
   margin: 0;
 }
@@ -28,7 +28,7 @@
 
 ion-content::part(background){
 
-  background: #0e0e0e;
+  background: #ffffff;
 
 }
 
@@ -37,7 +37,7 @@ ion-header {
 }
 
 ion-tab-bar {
-  --background: #0e0e0e; 
+  --background: #ffffff; 
   height: 8%;
   padding: auto;
 }
