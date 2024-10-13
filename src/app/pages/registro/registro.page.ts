@@ -7,6 +7,7 @@ import { AlertController } from '@ionic/angular';
 import { AbstractControl, ValidationErrors } from '@angular/forms';
 
 export function mayorDeEdadValidator(control: AbstractControl): ValidationErrors | null {
+  
   const fechaNacimiento = new Date(control.value);
   const year2024 = new Date('2024-01-01');
 

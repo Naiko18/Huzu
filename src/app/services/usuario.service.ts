@@ -48,7 +48,7 @@ export class UsuarioService {
       pos_vehiculo: 'Sí',
       patente: 'AB CD 12',
       cantidad_asientos: 4,
-      mod_vehi: 'Mazda RX8',
+      mod_vehi: 'Ford Explorer 2024',
       tip_user: 'Conductor'
     });
 
