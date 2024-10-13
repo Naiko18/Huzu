@@ -26,7 +26,6 @@ export function mayorDeEdadValidator(control: AbstractControl): ValidationErrors
   const diferenciaDia = year2024.getDate() - fechaNacimiento.getDate();
 
   return edad >= 18 ? null : { menorDeEdad: true };
-
 }
 
 @Injectable({
@@ -35,47 +34,10 @@ export function mayorDeEdadValidator(control: AbstractControl): ValidationErrors
 export class UsuarioService {
   public usuarios: { [rut: string]: FormGroup } = {};
 
+
   constructor() {
-
-    this.agregarUsuario({
-      nom_usuario: 'benjamin',
-      contraseña: 'Benjamin@123',
-      rep_contraseña: 'Benjamin@123',
-      correo: 'benjamin@duocuc.cl',
-      rut: '12345678-9',
-      fec_nacimiento: '2004-09-26',
-      genero: 'Masculino',
-      pos_vehiculo: 'Sí',
-      patente: 'AB CD 12',
-      cantidad_asientos: 4,
-      mod_vehi: 'Ford Explorer 2024',
-      tip_user: 'Conductor'
-    });
-
-    this.agregarUsuario({
-      nom_usuario: 'admin',
-      contraseña: 'Admin@123',
-      rep_contraseña: 'Admin@123',
-      correo: 'admin@duocuc.cl',
-      rut: '98765432-1',
-      fec_nacimiento: '2000-01-01',
-      genero: 'Otro',
-      tip_user: 'Administrador'
-    });
-
-    this.agregarUsuario({
-      nom_usuario: 'nicolas',
-      contraseña: 'Nicolas@123',
-      rep_contraseña: 'Nicolas@123',
-      correo: 'nico@duocuc.cl',
-      rut: '11223344-5',
-      fec_nacimiento: '2003-10-10',
-      genero: 'Masculino',
-      tip_user: 'Pasajero'
-    });
-
-
-   }
+    this.cargarUsuariosDesdeLocalStorage();
+  }
 
   agregarUsuario(nuevoUsuario: Usuario): boolean {
     const rut = nuevoUsuario.rut;
@@ -100,15 +62,16 @@ export class UsuarioService {
       });
 
       this.usuarios[rut] = formGroupUsuario;
+      this.guardarUsuariosEnLocalStorage(); 
       console.log('Usuario agregado:', formGroupUsuario.value);
       return true;
     }
-
   }
 
   modificarUsuario(rut: string, usuarioModificado: FormGroup): void {
     if (this.usuarios[rut]) {
       this.usuarios[rut] = usuarioModificado;
+      this.guardarUsuariosEnLocalStorage(); 
       console.log('Usuario modificado:', usuarioModificado.value);
     } else {
       console.log('Usuario no encontrado');
@@ -118,6 +81,7 @@ export class UsuarioService {
   eliminarUsuario(rut: string): boolean {
     if (this.usuarios[rut]) {
       delete this.usuarios[rut];
+      this.guardarUsuariosEnLocalStorage(); 
       console.log('Usuario eliminado:', rut);
       return true;
     } else {
@@ -136,5 +100,27 @@ export class UsuarioService {
     );
   }
 
-  
+  private guardarUsuariosEnLocalStorage(): void {
+    const usuariosArray = Object.entries(this.usuarios).map(([rut, formGroup]) => ({
+      ...formGroup.value,
+      rut: rut
+    }));
+    localStorage.setItem('usuarios', JSON.stringify(usuariosArray));
+  }
+
+  private cargarUsuariosDesdeLocalStorage(): void {
+    const usuariosGuardados = localStorage.getItem('usuarios');
+    if (usuariosGuardados) {
+      const usuariosArray: Usuario[] = JSON.parse(usuariosGuardados);
+      usuariosArray.forEach(usuario => {
+        this.agregarUsuario(usuario);
+      });
+    }
+  }
+
+  public obtenerUsuarioActual(nombre: string, contraseña: string): FormGroup | undefined {
+    const usuario = this.validarUsuario(nombre, contraseña);
+    return usuario;
+}
+
 }
