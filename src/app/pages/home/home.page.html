@@ -15,7 +15,7 @@
         <label for="viajes">Viajes</label>
       </ion-tab-button>
 
-      <ion-tab-button tab="administrador">
+      <ion-tab-button tab="administrador" *ngIf="usuario.tip_user=='Administrador'">
         <ion-icon name="construct-outline"></ion-icon>
         <label for="administrador">Panel administrador</label>
       </ion-tab-button>

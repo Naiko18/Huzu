@@ -37,6 +37,20 @@ export class UsuarioService {
 
   constructor() {
     this.cargarUsuariosDesdeLocalStorage();
+    this.crearUsuarioPredeterminado();
+  }
+
+  private crearUsuarioPredeterminado(): void {
+    this.agregarUsuario({
+      nom_usuario: 'admin',
+      contraseña: 'Admin@123',
+      rep_contraseña: 'Admin@123',
+      correo: 'admin@duocuc.cl',
+      rut: '98765432-1',
+      fec_nacimiento: '2000-01-01',
+      genero: 'Otro',
+      tip_user: 'Administrador'
+    });
   }
 
   agregarUsuario(nuevoUsuario: Usuario): boolean {

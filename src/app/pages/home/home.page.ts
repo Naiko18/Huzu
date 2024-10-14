@@ -7,7 +7,13 @@ import { Component } from '@angular/core';
 })
 export class HomePage {
 
+  usuario: any;
+
   constructor() {}
+
+  ngOnInit(){
+    this.usuario = JSON.parse(localStorage.getItem("usuario") || '');
+  }
 
 }
 
