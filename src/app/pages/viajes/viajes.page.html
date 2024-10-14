@@ -20,8 +20,8 @@
       <style>
         .rectangulo {
             width: 100vw; 
-            height: 90vh; 
-            border-radius: 2% 2% 0 0;
+            height: 100vh; 
+            border-radius: 0 0 0 0;
             margin: 0; 
             display: block; 
             flex-direction: column;
@@ -41,16 +41,15 @@
             text-align: center; 
         }
 
-        .titulo {
-            font-size: 24px; 
-            font-weight: bold; 
-            margin-bottom: 10px; 
-        }
+        .mensaje{
 
-        .subtitulo {
-            font-size: 16px; 
-            margin-bottom: 30px; 
-            color: gray; 
+          text-align: center; 
+          display: block;
+          font-size: 20px;
+          padding: 3%;
+          background-color: #1c2120;
+          color: white;
+
         }
 
         ion-input {
@@ -60,11 +59,21 @@
             --background: white; 
         }
       </style>
-      
-      <!-- 
-      <div class="titulo">INICIAR SESIÓN</div>
-      <div class="subtitulo">Inicie sesión para continuar</div>
-      -->
+     
+     <div class="mensajeInicio">
+      <ion-card class="mensaje"
+        [ngClass]="{
+          'animate__animated': true,
+          'animate__bounceIn': animacion === 'entrar',
+          'animate__bounceOut': animacion === 'salir'
+        }"
+        
+        [style.animationDuration]="'2s'"
+        (animationend)="animacionSalir()">
+          {{ mensajeBienvenida }} {{ usuario?.nom_usuario | titlecase }}
+      </ion-card>
+    </div>
+ 
     
     </div>
   </div>
