@@ -9,6 +9,7 @@ import { UsuarioService } from 'src/app/services/usuario.service';
 })
 export class RecuperarPage implements OnInit {
 
+  usuario: any;
   alertButtons = ['Action'];
 
   recuperar = new FormGroup({
@@ -17,11 +18,12 @@ export class RecuperarPage implements OnInit {
 
   });
 
-  
 
   constructor(private usuarioService: UsuarioService) { }
 
   ngOnInit() {
+    this.usuario = JSON.parse(localStorage.getItem("usuario") || '');
   }
+
 
 }

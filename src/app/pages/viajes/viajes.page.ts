@@ -37,7 +37,7 @@ export class ViajesPage implements OnInit {
   animacionSalir(){
     setTimeout(() => {
       this.animacion = 'salir';
-    }, 3500);
+    }, 2000);
   }
 
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UsuarioService } from '../../services/usuario.service';
 import { FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-perfil',
@@ -8,18 +9,30 @@ import { FormGroup } from '@angular/forms';
   styleUrls: ['./perfil.page.scss'],
 })
 export class PerfilPage implements OnInit {
-  usuario: FormGroup | undefined;
+  usuario: any;
 
-  constructor(private usuarioService: UsuarioService) { }
+  constructor(private usuarioService: UsuarioService, private route: Router) { }
 
   ngOnInit() {
-    
-    const nombreUsuario = localStorage.getItem('nom_usuario'); 
-    const contraseñaUsuario = localStorage.getItem('contraseña');
 
-    if (nombreUsuario && contraseñaUsuario) {
-      this.usuario = this.usuarioService.validarUsuario(nombreUsuario, contraseñaUsuario);
-    }
+    this.usuario = JSON.parse(localStorage.getItem("usuario") || '');
+  
   }
+
+  irConfiguracion() {
+    
+  }
+  
+  verPoliticas() {
+    
+  }
+  
+  cerrarSesion() {
+    
+    this.usuarioService.eliminarUsuario
+    this.route.navigate(['/login']);
+  }
+
+
 
 }

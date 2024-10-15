@@ -1,51 +1,145 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>perfil</ion-title>
+    <ion-title>Perfil</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  
-  <ion-card>
-    <ion-card-header>
+  <div class="container">
+    <div class="rectangulo">
+     
       <ion-item lines="none">
         <ion-label>
-          <ion-card-title>
-            {{ usuario?.get('nom_usuario')?.value }}
-          </ion-card-title>
-          <ion-card-subtitle>
-            Usuario desde 2024
-          </ion-card-subtitle>
+          <h2>{{ usuario?.nom_usuario | titlecase }}</h2>
+          <h3>Usuario desde 2024</h3>
         </ion-label>
-        <ion-avatar slot="end">
+        <ion-avatar slot="start">
           <img alt="Silhouette of a person's head" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
         </ion-avatar>
       </ion-item>
-    </ion-card-header>
-  </ion-card>
 
-  <ion-card>
-    <ion-card-content>
-      <ion-item lines="none">
-        <ion-label>Viajes Realizados</ion-label>
-        <ion-note slot="end" color="dark">1</ion-note>
-      </ion-item>
+      
+      <br>
+      <br>
+      <ion-label>
+        <h1>Sobre mí</h1>
+      </ion-label>
 
-      <ion-item lines="none">
-        <ion-label>Calificación</ion-label>
-        <ion-icon name="star" color="dark"></ion-icon>
-        <ion-icon name="star" color="dark"></ion-icon>
-        <ion-icon name="star" color="dark"></ion-icon>
-        <ion-icon name="star" color="dark"></ion-icon>
-        <ion-icon name="star-outline"></ion-icon>
-      </ion-item>
+    
+      <ion-list>
+        <ion-item>
+          <ion-icon name="card-outline" slot="start"></ion-icon>
+          <ion-label>RUT: {{ usuario?.rut }}</ion-label>
+        </ion-item>
 
-      <ion-item lines="none">
-        <ion-label>Comunas Frecuentes</ion-label>
-        <ion-note slot="end" color="dark">Puente Alto</ion-note>
-      </ion-item>
+        <ion-item>
+          <ion-icon name="calendar-outline" slot="start"></ion-icon>
+          <ion-label>Fecha de Nacimiento: {{ usuario?.fec_nacimiento }}</ion-label>
+        </ion-item>
 
-    </ion-card-content>
-  </ion-card>
+        <ion-item>
+          <ion-icon name="male-female-outline" slot="start"></ion-icon>
+          <ion-label>Género: {{ usuario?.genero }}</ion-label>
+        </ion-item>
 
+        <ion-item>
+          <ion-icon name="mail-outline" slot="start"></ion-icon>
+          <ion-label>Correo: {{ usuario?.correo }}</ion-label>
+        </ion-item>
+      </ion-list>
+
+     
+      <hr class="separator">
+
+      
+      <ion-list>
+        <ion-item button="true" (click)="irConfiguracion()">
+          <ion-icon name="settings-outline" slot="start"></ion-icon>
+          <ion-label>Configuración</ion-label>
+        </ion-item>
+      
+        <ion-item button="true" (click)="verPoliticas()">
+          <ion-icon name="document-text-outline" slot="start"></ion-icon>
+          <ion-label>Políticas de la empresa</ion-label>
+        </ion-item>
+      
+        <ion-item button="true" (click)="cerrarSesion()">
+          <ion-icon name="log-out-outline" slot="start"></ion-icon>
+          <ion-label>Cerrar sesión</ion-label>
+        </ion-item>
+      </ion-list>
+
+      <style>
+        .rectangulo {
+          width: 100vw;
+          height: 100vh;
+          border-radius: 0 0 0 0;
+          margin: 0;
+          display: block;
+          flex-direction: column;
+          background-color: white;
+          padding: 30px;
+          box-sizing: border-box;
+          overflow-y: auto;
+        }
+
+        .container {
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-end;
+          align-items: stretch;
+          width: 100%;
+          height: 100%;
+          text-align: center;
+        }
+
+        ion-input {
+          --border-radius: 20px;
+          --padding-start: 10px;
+          --padding-end: 10px;
+          --background: white;
+        }
+
+        h2 {
+          text-align: left;
+          font-size: 1.5rem;
+          margin: 0;
+          font-weight: bold;
+        }
+
+        h3 {
+          text-align: left;
+          font-size: 1rem;
+          margin: 0;
+          color: grey;
+        }
+
+        h1 {
+          text-align: left;
+          font-size: 1.5rem;
+          margin: 0;
+        }
+
+        ion-list {
+          margin-top: 20px;
+        }
+
+        ion-item {
+          --padding-start: 10px;
+        }
+
+        ion-icon {
+          font-size: 1.2rem;
+          color: #666;
+        }
+
+        .separator {
+          border: 0;
+          height: 1px;
+          background: #ddd;
+          margin: 20px 0;
+        }
+      </style>
+    </div>
+  </div>
 </ion-content>
