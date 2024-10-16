@@ -8,6 +8,10 @@ ion-content::part(background){
   
 }
 
+ion-avatar {
+    --border-radius: 4px;
+}
+
 /*ion-icon{
 
   display: block;

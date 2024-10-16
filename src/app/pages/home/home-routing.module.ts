@@ -24,6 +24,10 @@ const routes: Routes = [
         loadChildren: () => import('../mapa/mapa.module').then( m => m.MapaPageModule)
       },
       {
+        path: 'mapa-conductor',
+        loadChildren: () => import('../mapa-conductor/mapa-conductor.module').then( m => m.MapaConductorPageModule)
+      },
+      {
         path: '',  
         redirectTo: 'viajes',
         pathMatch: 'full' 

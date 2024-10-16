@@ -31,6 +31,7 @@ export class PerfilPage implements OnInit {
     
     this.usuarioService.eliminarUsuario
     this.route.navigate(['/login']);
+  
   }
 
 
