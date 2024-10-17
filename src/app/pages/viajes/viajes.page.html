@@ -5,78 +5,61 @@
 </ion-header>
 
 <ion-content>
-  
-   <!-- 
-  <div class="mensajeInicio">
-    <ion-card class="mensaje">
-      {{ mensajeBienvenida }}
-    </ion-card>
-  </div>
-  -->
-
   <div class="container">
-
     <div class="rectangulo">
-      <style>
-        .rectangulo {
-            width: 100vw; 
-            height: 100vh; 
-            border-radius: 0 0 0 0;
-            margin: 0; 
-            display: block; 
-            flex-direction: column;
-            background-color: white;
-            padding: 60px; 
-            box-sizing: border-box; 
-            overflow-y: auto;
-        }
-        
-        .container {
-            display: flex; 
-            flex-direction: column;
-            justify-content: flex-end; 
-            align-items: stretch;
-            width: 100%; 
-            height: 100%;
-            text-align: center; 
-        }
-
-        .mensaje{
-
-          text-align: center; 
-          display: block;
-          font-size: 20px;
-          padding: 3%;
-          background-color: #1c2120;
-          color: white;
-
-        }
-
-        ion-input {
-            --border-radius: 20px; 
-            --padding-start: 10px; 
-            --padding-end: 10px; 
-            --background: white; 
-        }
-      </style>
-     
-     <div class="mensajeInicio">
-      <ion-card class="mensaje"
-        [ngClass]="{
-          'animate__animated': true,
-          'animate__bounceIn': animacion === 'entrar',
-          'animate__bounceOut': animacion === 'salir'
-        }"
-        
-        [style.animationDuration]="'2s'"
-        (animationend)="animacionSalir()">
+      <div class="mensajeInicio">
+        <ion-card class="mensaje"
+          [ngClass]="{
+            'animate__animated': true,
+            'animate__bounceIn': animacion === 'entrar',
+            'animate__bounceOut': animacion === 'salir'
+          }"
+          [style.animationDuration]="'2s'"
+          (animationend)="animacionSalir()">
           {{ mensajeBienvenida }} {{ usuario?.nom_usuario | titlecase }}
-      </ion-card>
-    </div>
- 
-    
+        </ion-card>
+      </div>
+
+      <ng-container *ngIf="viajes.length > 0">
+        <ion-card class="viaje-card" *ngFor="let viaje of viajes">
+          <ion-card-header>
+            <ion-card-title>Viaje: </ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-item>
+              <ion-icon slot="start" name="person"></ion-icon>
+              <ion-label>Conductor: {{ viaje.nombreConductor }}</ion-label>
+            </ion-item>
+            <ion-item>
+              <ion-icon slot="start" name="navigate"></ion-icon>
+              <ion-label>Ubicación Actual: {{ viaje.ubicacionActual }}</ion-label>
+            </ion-item>
+            <ion-item>
+              <ion-icon slot="start" name="location"></ion-icon>
+              <ion-label>Destino: {{ viaje.ubicacionDestino }}</ion-label>
+            </ion-item>
+            <ion-item>
+              <ion-icon slot="start" name="map"></ion-icon>
+              <ion-label>Distancia: {{ viaje.distancia }} metros</ion-label>
+            </ion-item>
+            <ion-item>
+              <ion-icon slot="start" name="time"></ion-icon>
+              <ion-label>Tiempo Estimado: {{ viaje.tiempoEstimado }} minutos</ion-label>
+            </ion-item>
+            <ion-item>
+              <ion-icon slot="start" name="cash"></ion-icon>
+              <ion-label>Costo: {{ viaje.costoTotal | currency:'CLP' }}</ion-label>
+            </ion-item>
+          </ion-card-content>
+        </ion-card>
+      </ng-container>
+
+      <ng-template #noViajes>
+        <p>No hay viajes disponibles.</p>
+      </ng-template>
+
+      
+      <ion-button *ngIf="usuario?.tip_user === 'Conductor'" (click)="irmapaConductor()" class="crear-viaje" color="dark" expand="block">Crear Viaje</ion-button>
     </div>
   </div>
-
-  
 </ion-content>

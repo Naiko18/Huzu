@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 import { UsuarioService } from 'src/app/services/usuario.service';
 
 @Component({
@@ -12,13 +13,31 @@ export class ViajesPage implements OnInit {
   mensajeBienvenida: string | undefined;
   usuario: any;
   animacion: 'entrar' | 'salir' = 'entrar'; 
+  viajes: any[] = [];
+  costoTotal: number = 0;
 
-  constructor(private usuarioService: UsuarioService) { }
+  constructor(private usuarioService: UsuarioService, private route: Router) { }
 
   ngOnInit() {
     this.mensajeBienvenida = this.getWelcomeMessage();
-    this.usuario = JSON.parse(localStorage.getItem("usuario") || '');  
- 
+    this.usuario = JSON.parse(localStorage.getItem("usuario") || '{}');  
+    this.cargarViajes();
+    
+    const viajesGuardados = localStorage.getItem('viajeConfirmado');
+    if (viajesGuardados) {
+        this.viajes = JSON.parse(viajesGuardados);
+    } else {
+        this.viajes = [];
+    }
+
+  }
+
+  ionViewWillEnter() {
+    this.cargarViajes();
+  }
+
+  cargarViajes() {
+    this.viajes = this.usuarioService.obtenerDatosViajes();
   }
   
 
@@ -38,6 +57,12 @@ export class ViajesPage implements OnInit {
     setTimeout(() => {
       this.animacion = 'salir';
     }, 2000);
+  }
+
+  irmapaConductor(){
+
+    this.route.navigate(['/mapa-conductor']);
+
   }
 
 }

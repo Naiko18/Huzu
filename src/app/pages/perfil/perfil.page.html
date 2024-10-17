@@ -39,12 +39,22 @@
 
         <ion-item>
           <ion-icon name="male-female-outline" slot="start"></ion-icon>
-          <ion-label>Género: {{ usuario?.genero }}</ion-label>
+          <ion-label>Género: {{ usuario?.genero | titlecase }}</ion-label>
         </ion-item>
 
         <ion-item>
           <ion-icon name="mail-outline" slot="start"></ion-icon>
           <ion-label>Correo: {{ usuario?.correo }}</ion-label>
+        </ion-item>
+
+        <ion-item *ngIf="usuario?.tip_user === 'Conductor'">
+          <ion-icon name="id-card-outline" slot="start"></ion-icon>
+          <ion-label>Patente: {{ usuario?.patente }}</ion-label>
+        </ion-item>
+
+        <ion-item *ngIf="usuario?.tip_user === 'Conductor'">
+          <ion-icon name="car-sport-outline" slot="start"></ion-icon>
+          <ion-label>Modelo vehiculo: {{ usuario?.mod_vehi }}</ion-label>
         </ion-item>
       </ion-list>
       

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import * as L from 'leaflet';
 import * as G from 'leaflet-control-geocoder';
 import 'leaflet-routing-machine';
@@ -22,16 +23,35 @@ export class MapaConductorPage implements OnInit {
   distancia_metros: number = 0;
   tiempo_segundos: number = 0;
   
-  // Nuevas variables
+  
   tiempoMinutos: number = 0;
   costoTotal: number = 0; 
-  
   private userLocation: L.LatLng | undefined;
+  guardarDatosViaje: string[] = [];
 
-  constructor(private usuarioService: UsuarioService) {}
+  usuario: any;
+  viaje: any;
+
+  viajesConfirmados: any[] = [];
+
+  constructor(private usuarioService: UsuarioService, private router: Router) {
+
+
+
+  }
 
   ngOnInit() {
     this.initMap();
+    
+      this.initMap();
+      
+      const storedUsuario = localStorage.getItem("usuario");
+      this.usuario = storedUsuario ? JSON.parse(storedUsuario) : null; 
+  
+      const storedViaje = localStorage.getItem("viaje");
+      this.viaje = storedViaje ? JSON.parse(storedViaje) : null; 
+  
+
   }
 
   initMap() {
@@ -109,4 +129,35 @@ export class MapaConductorPage implements OnInit {
       }
     });
   }
+
+  confirmarViaje() {
+    const viajeData = {
+        ubicacionActual: `${this.userLocation?.lat}, ${this.userLocation?.lng}`,
+        ubicacionDestino: this.direccion,
+        distancia: this.distancia_metros,
+        ruta: 'Ruta calculada', 
+        fecha: new Date(),
+        nombreConductor: 'Nombre del conductor', 
+        asientosDisponibles: 4, 
+        tiempoEstimado: this.tiempoMinutos,
+        estado: 'pendiente',
+        pasajeros: [] 
+    };
+
+    this.usuarioService.guardarDatosViaje(viajeData);
+    this.viajesConfirmados.push(viajeData); 
+    alert('Viaje confirmado y guardado.');
+
+
+    this.usuarioService.guardarDatosViaje(viajeData);
+    alert('Viaje confirmado y guardado.');
+
+    localStorage.setItem('viajeConfirmado', JSON.stringify(viajeData));
+
+    
+    this.router.navigate(['/home/viajes']);
+  }
+
+
+
 }

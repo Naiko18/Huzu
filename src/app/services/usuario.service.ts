@@ -193,4 +193,19 @@ export class UsuarioService {
       this.idCounter = this.viajes.length > 0 ? Math.max(...this.viajes.map(v => v.id)) + 1 : 1; 
     }
   }
+ 
+  ///////////////////////////////////////////////
+ 
+  obtenerDatosViajes(): any[] {
+    const viajes = localStorage.getItem('viajes');
+    return viajes ? JSON.parse(viajes) : [];
+  }
+
+  guardarDatosViaje(datos: any): void {
+    const viajes = this.obtenerDatosViajes(); 
+    viajes.push(datos); 
+    localStorage.setItem('viajes', JSON.stringify(viajes)); 
+  }
+
+
 }
