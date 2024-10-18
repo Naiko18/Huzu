@@ -49,9 +49,14 @@ const routes: Routes = [
     loadChildren: () => import('./pages/mapa-conductor/mapa-conductor.module').then( m => m.MapaConductorPageModule)
   },
   {
+    path: 'inicio-app',
+    loadChildren: () => import('./pages/inicio-app/inicio-app.module').then( m => m.InicioAppPageModule)
+  },
+  {
     path: '**',
     loadChildren: () => import('./pages/error404/error404.module').then( m => m.Error404PageModule)
   },
+
 
 
 ];

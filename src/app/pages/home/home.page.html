@@ -10,18 +10,18 @@
   <ion-tabs>
     <ion-tab-bar slot="bottom">
 
-      <ion-tab-button tab="viajes">
-        <ion-icon name="car-sport-outline"></ion-icon>
-        <label for="viajes">Viajes</label>
+      <ion-tab-button tab="inicio-app" (click)="onTabChange($event)">
+        <ion-icon name="home"></ion-icon>
+        <label for="inicio-app">Inicio</label>
       </ion-tab-button>
 
-      <ion-tab-button tab="administrador" *ngIf="usuario.tip_user=='Administrador'">
-        <ion-icon name="construct-outline"></ion-icon>
-        <label for="administrador">Panel administrador</label>
+      <ion-tab-button tab="administrador" *ngIf="usuario.tip_user=='Administrador'" (click)="onTabChange($event)">
+        <ion-icon name="construct"></ion-icon>
+        <label for="administrador">Administración</label>
       </ion-tab-button>
 
-      <ion-tab-button tab="perfil">
-        <ion-icon name="person-outline"></ion-icon>
+      <ion-tab-button tab="perfil" (click)="onTabChange($event)">
+        <ion-icon name="person"></ion-icon>
         <label for="perfil">Perfil</label>
       </ion-tab-button>
 

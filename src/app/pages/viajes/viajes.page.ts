@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { UsuarioService } from 'src/app/services/usuario.service';
 
 @Component({
-  selector: 'app-viajes',
+  selector: 'app-viajes', 
   templateUrl: './viajes.page.html',
   styleUrls: ['./viajes.page.scss'],
 })
@@ -15,13 +15,14 @@ export class ViajesPage implements OnInit {
   animacion: 'entrar' | 'salir' = 'entrar'; 
   viajes: any[] = [];
   costoTotal: number = 0;
+  
 
   constructor(private usuarioService: UsuarioService, private route: Router) { }
 
   ngOnInit() {
+    this.cargarViajes();
     this.mensajeBienvenida = this.getWelcomeMessage();
     this.usuario = JSON.parse(localStorage.getItem("usuario") || '{}');  
-    this.cargarViajes();
     
     const viajesGuardados = localStorage.getItem('viajeConfirmado');
     if (viajesGuardados) {
@@ -29,7 +30,7 @@ export class ViajesPage implements OnInit {
     } else {
         this.viajes = [];
     }
-
+    
   }
 
   ionViewWillEnter() {
@@ -61,7 +62,14 @@ export class ViajesPage implements OnInit {
 
   irmapaConductor(){
 
-    this.route.navigate(['/mapa-conductor']);
+    this.route.navigate(['/home/mapa-conductor']);
+
+  }
+
+  cancelarViaje(){
+
+    this.usuarioService.eliminarViaje
+    this.route.navigate(['home/viajes']);
 
   }
 

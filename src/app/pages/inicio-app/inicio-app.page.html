@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>inicio-app</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="container">
+    <ion-img src="assets/huzuini.png" class="logo"></ion-img> 
+    <div class="rectangulo">
+      <div class="titulo"></div>
+      <div class="subtitulo"></div>
+
+      <ion-slides #slides pager="true" loop="true" autoplay="true" speed="400" style="--swiper-pagination-display: none;"> 
+        <ion-slide>
+          <ion-card class="card1">
+            <ion-card-header>
+              <ion-card-title style="font-size: medium; font-weight: bold; color: white;">¡DESCUENTO EN TU PRIMER VIAJE!</ion-card-title>
+            </ion-card-header>
+            <ion-card-content>
+              <h3>¡Obtén un 20% de descuento en tu primer viaje!</h3>
+              <p>Usa el código: <strong>"DUOCUNO".</strong></p>
+            </ion-card-content>
+          </ion-card>
+        </ion-slide>
+        <ion-slide>
+          <ion-card class="card2">
+            <ion-card-header>
+              <ion-card-title style="font-size: medium; font-weight: bold; color: white;">¡VIAJES EN GRUPO!</ion-card-title>
+            </ion-card-header>
+            <ion-card-content>
+              <p>Reserva para <strong>4 personas</strong> y recibe un viaje gratis.</p>
+            </ion-card-content>
+          </ion-card>
+        </ion-slide>
+      </ion-slides>
+
+    </div>
+    <div class="start-journey">
+      <ion-label (click)="comienzaViaje()">
+        <h2>Comienza tu viaje</h2>
+        <ion-icon name="arrow-forward-outline" class="arrow-right"></ion-icon>
+      </ion-label>
+    </div>
+  </div>
+</ion-content>

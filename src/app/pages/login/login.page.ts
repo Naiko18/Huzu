@@ -23,7 +23,7 @@ export class LoginPage implements OnInit {
       
       localStorage.setItem('usuario', JSON.stringify(usuarioValido.value));
 
-      this.route.navigate(['/home']);
+      this.route.navigate(['/home/inicio-app']);
     } else {
       console.log('Contraseña o usuario incorrectos');
     }

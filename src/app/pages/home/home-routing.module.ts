@@ -8,6 +8,10 @@ const routes: Routes = [
     component: HomePage,
     children: [
       {
+        path: 'inicio-app',
+        loadChildren: () => import('../inicio-app/inicio-app.module').then( m => m.InicioAppPageModule)
+      },
+      {
         path: 'viajes',
         loadChildren: () => import('../viajes/viajes.module').then( m => m.ViajesPageModule)
       },
@@ -29,7 +33,7 @@ const routes: Routes = [
       },
       {
         path: '',  
-        redirectTo: 'viajes',
+        redirectTo: 'inicio-app',
         pathMatch: 'full' 
       }
     ]

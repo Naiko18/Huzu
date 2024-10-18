@@ -20,6 +20,7 @@ export class MapaConductorPage implements OnInit {
   latitud: number = 0;
   longitud: number = 0;
   direccion: string = '';
+  direccion_inicial: string = '';
   distancia_metros: number = 0;
   tiempo_segundos: number = 0;
   
@@ -31,8 +32,11 @@ export class MapaConductorPage implements OnInit {
 
   usuario: any;
   viaje: any;
+  ruta: any;
+  estado: 'pendiente' | 'en curso' | 'finalizado' | undefined;
 
   viajesConfirmados: any[] = [];
+  middleCircle: any;
 
   constructor(private usuarioService: UsuarioService, private router: Router) {
 
@@ -73,10 +77,19 @@ export class MapaConductorPage implements OnInit {
 
         if (!this.circle) {
           this.circle = L.circle(e.latlng, {
-            radius: radius,
+            radius: 15, 
             color: 'black',
             fillColor: '#000000',
             fillOpacity: 0.5,
+          }).addTo(this.map!);
+        }
+
+        if (!this.middleCircle) {
+          this.middleCircle = L.circle(e.latlng, {
+            radius: 5, 
+            color: 'black', 
+            fillColor: '#000000',
+            fillOpacity: radius,
           }).addTo(this.map!);
         }
       });
@@ -116,14 +129,19 @@ export class MapaConductorPage implements OnInit {
         })
           .on('routesfound', (e: any) => {
             const route = e.routes[0];
-            this.distancia_metros = route.summary.totalDistance;
-            this.tiempo_segundos = route.summary.totalTime;
-
             
+            this.distancia_metros = route.summary.totalDistance / 1000;
+
+            this.distancia_metros = route.summary.totalDistance;
+
+            this.tiempo_segundos = route.summary.totalTime;
+            
+            this.ruta = route;
+
             this.tiempoMinutos = Math.floor(this.tiempo_segundos / 60);
 
            
-            this.costoTotal = Math.round(this.distancia_metros * 0.70 * 100) / 100;
+            this.costoTotal = Math.round(this.distancia_metros * 0.70 * 1000) / 1000;
           })
           .addTo(this.map);
       }
@@ -132,29 +150,24 @@ export class MapaConductorPage implements OnInit {
 
   confirmarViaje() {
     const viajeData = {
-        ubicacionActual: `${this.userLocation?.lat}, ${this.userLocation?.lng}`,
+        ubicacionActual: `${this.userLocation?.lat}, ${this.userLocation?.lng}` ,
         ubicacionDestino: this.direccion,
         distancia: this.distancia_metros,
-        ruta: 'Ruta calculada', 
+        ruta: `${this.ruta}`, 
         fecha: new Date(),
-        nombreConductor: 'Nombre del conductor', 
+        nombreConductor: this.usuarioService.obtenerUsuarioActual, 
         asientosDisponibles: 4, 
         tiempoEstimado: this.tiempoMinutos,
         estado: 'pendiente',
-        pasajeros: [] 
+        pasajeros: [],
+        costoTotal: `${this.costoTotal}`,
+
     };
 
     this.usuarioService.guardarDatosViaje(viajeData);
-    this.viajesConfirmados.push(viajeData); 
-    alert('Viaje confirmado y guardado.');
-
-
-    this.usuarioService.guardarDatosViaje(viajeData);
-    alert('Viaje confirmado y guardado.');
 
     localStorage.setItem('viajeConfirmado', JSON.stringify(viajeData));
 
-    
     this.router.navigate(['/home/viajes']);
   }
 
