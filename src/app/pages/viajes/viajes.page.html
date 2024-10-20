@@ -7,6 +7,7 @@
 <ion-content>
   <div class="container">
     <div class="rectangulo">
+      <!--
       <div class="mensajeInicio">
         <ion-card class="mensaje"
           [ngClass]="{ 
@@ -19,7 +20,7 @@
           {{ mensajeBienvenida }} {{ usuario?.nom_usuario | titlecase }}
         </ion-card>
       </div>
-
+       -->
       <ng-container *ngIf="viajes.length > 0">
         <ion-card class="viaje-card" *ngFor="let viaje of viajes">
           <ion-card-header>
@@ -51,7 +52,7 @@
               <ion-label>Costo: {{ viaje.costoTotal | currency:'CLP' }}</ion-label>
             </ion-item>
             <br>
-            <ion-button *ngIf="usuario?.tip_user === 'Pasajero'" color="dark" expand="block">Tomar viaje</ion-button>
+            <ion-button (click)="irmapaUsuario()" *ngIf="usuario?.tip_user === 'Pasajero'" color="dark" expand="block">Tomar viaje</ion-button>
             <ion-button *ngIf="usuario?.tip_user === 'Conductor'" color="dark" expand="block" slot="start">Editar viaje</ion-button>
             <ion-button *ngIf="usuario?.tip_user === 'Conductor'" color="danger" expand="block" slot="end" (click)="cancelarViaje()">Cancelar viaje</ion-button>
           </ion-card-content>
@@ -66,4 +67,6 @@
       <ion-button *ngIf="usuario?.tip_user === 'Conductor'" (click)="irmapaConductor()" class="crear-viaje" color="dark" expand="block">Crear Viaje</ion-button>
     </div>
   </div>
+
 </ion-content>
+

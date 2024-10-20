@@ -20,7 +20,7 @@ export interface Usuario {
 export interface Viaje {
   id: number; 
   ubicacionActual: string;
-  ubicacionDestino: string;
+  ubicacionDestino: { nombre: string; coordenadas: { lat: number; lng: number } };
   distancia: number; 
   ruta: string; 
   fecha: Date;
@@ -156,14 +156,14 @@ export class UsuarioService {
 
   agregarViaje(viaje: Omit<Viaje, 'id'>): void {
     const nuevoViaje: Viaje = {
-      ...viaje,
-      id: this.idCounter++, 
-      estado: 'pendiente',
-      pasajeros: [], 
+        ...viaje,
+        id: this.idCounter++, 
+        estado: 'pendiente',
+        pasajeros: [], 
     };
     this.viajes.push(nuevoViaje);
     this.guardarViajesEnLocalStorage();
-  }
+}
 
   obtenerViajes(): Viaje[] {
     return this.viajes;

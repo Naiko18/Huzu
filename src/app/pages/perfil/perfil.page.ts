@@ -34,6 +34,11 @@ export class PerfilPage implements OnInit {
   
   }
 
+  irTerminos(){
+
+    this.route.navigate(['/home/terminos']);
+  }
+
 
 
 }

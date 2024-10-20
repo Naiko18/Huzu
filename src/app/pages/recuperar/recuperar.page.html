@@ -3,7 +3,7 @@
     <ion-title>recuperar</ion-title>
   </ion-toolbar>
 </ion-header>
-
+ 
 <ion-content >
   
   <div class="container">
@@ -61,15 +61,10 @@
       <div class="titulo">¿Problemas con el inicio de sesión?</div>
       <div class="subtitulo">Ingresa tu correo electronico y te enviaremos un enlace con los pasos necesarios para recuperar tu cuenta.</div>
       <br>
-      <form [formGroup]="recuperar">
-        <ion-input formControlName="email" type="email" fill="solid" label="Ingrese su correo" labelPlacement="floating"></ion-input>     
-        <br>
-        <br>
-        <ion-button id="present-alert" color="dark" expand="block"> Recuperar </ion-button>
-        <ion-alert trigger="present-alert" header="Alerta" message="Se ha enviado un enlace para recuperar su cuenta a su correo" [buttons]="alertButtons"></ion-alert>
-      </form>
-      <br>
-      <br>
+      <ion-input type="email" fill="solid" label="Ingrese su correo" labelPlacement="floating" [(ngModel)]="correo"></ion-input>     
+      <br><br>
+      <ion-button (click)="recuperarCuenta()" color="dark" expand="block">Recuperar</ion-button>
+      <br><br>
       <ion-label><a routerLink="/login">Si ya tienes una cuenta, haz click aquí</a></ion-label>
     </div>
   </div>

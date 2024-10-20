@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { AlertController } from '@ionic/angular';
 import { UsuarioService } from 'src/app/services/usuario.service';
 
 @Component({
@@ -8,22 +8,32 @@ import { UsuarioService } from 'src/app/services/usuario.service';
   styleUrls: ['./recuperar.page.scss'],
 })
 export class RecuperarPage implements OnInit {
+  correo: string | undefined;
 
-  usuario: any;
-  alertButtons = ['Action'];
+  constructor(private alertController: AlertController, private usuarioService: UsuarioService) {}
 
-  recuperar = new FormGroup({
-  
-    email: new FormControl('',[Validators.required, Validators.email])
+  ngOnInit() {}
 
-  });
+  async recuperarCuenta() {
+    const usuarios = JSON.parse(localStorage.getItem('usuarios') || '[]');
+    const usuario = usuarios.find((user: any) => user.correo === this.correo);
 
-
-  constructor(private usuarioService: UsuarioService) { }
-
-  ngOnInit() {
-    this.usuario = JSON.parse(localStorage.getItem("usuario") || '');
+    if (usuario) {
+      
+      const alert = await this.alertController.create({
+        header: 'Alerta',
+        message: 'Se ha enviado un enlace para recuperar su cuenta a su correo',
+        buttons: ['Aceptar'],
+      });
+      await alert.present();
+    } else {
+      
+      const alert = await this.alertController.create({
+        header: 'Alerta',
+        message: 'Por favor ingrese un correo válido',
+        buttons: ['Aceptar'],
+      });
+      await alert.present();
+    }
   }
-
-
 }

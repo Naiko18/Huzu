@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UsuarioService } from 'src/app/services/usuario.service';
+import { MapaConductorPage } from '../mapa-conductor/mapa-conductor.page'; 
+
+
 
 @Component({
   selector: 'app-viajes', 
@@ -64,6 +67,12 @@ export class ViajesPage implements OnInit {
 
     this.route.navigate(['/home/mapa-conductor']);
 
+  }
+
+  irmapaUsuario() {
+    
+    this.route.navigate(['/home/mapa-conductor']);
+  
   }
 
   cancelarViaje(){

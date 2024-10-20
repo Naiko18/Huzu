@@ -8,85 +8,72 @@
   <div class="container">
     <div class="rectangulo">
       <ion-item lines="none">
+        <ion-avatar slot="start">
+          <img alt="Avatar" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
+        </ion-avatar>
         <ion-label>
           <h2>{{ usuario?.nom_usuario | titlecase }}</h2>
           <h3>Usuario desde 2024</h3>
         </ion-label>
-        <ion-avatar slot="start">
-          <img alt="Silhouette of a person's head" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
-        </ion-avatar>
       </ion-item>
 
-      <br><br>
+      <br>
 
       <ion-label>
         <h1>Sobre mí</h1>
       </ion-label>
-      <br>
       <ion-list>
         <ion-item>
           <ion-icon name="card-outline" slot="start"></ion-icon>
           <ion-label>RUT: {{ usuario?.rut }}</ion-label>
         </ion-item>
-
         <ion-item>
           <ion-icon name="calendar-outline" slot="start"></ion-icon>
           <ion-label>Fecha de Nacimiento: {{ usuario?.fec_nacimiento }}</ion-label>
         </ion-item>
-
         <ion-item>
           <ion-icon name="male-female-outline" slot="start"></ion-icon>
           <ion-label>Género: {{ usuario?.genero | titlecase }}</ion-label>
         </ion-item>
-
         <ion-item>
           <ion-icon name="mail-outline" slot="start"></ion-icon>
           <ion-label>Correo: {{ usuario?.correo }}</ion-label>
         </ion-item>
-
         <ion-item *ngIf="usuario?.tip_user === 'Conductor'">
           <ion-icon name="id-card-outline" slot="start"></ion-icon>
           <ion-label>Patente: {{ usuario?.patente }}</ion-label>
         </ion-item>
-
         <ion-item *ngIf="usuario?.tip_user === 'Conductor'">
           <ion-icon name="car-sport-outline" slot="start"></ion-icon>
-          <ion-label>Modelo vehiculo: {{ usuario?.mod_vehi }}</ion-label>
+          <ion-label>Modelo vehículo: {{ usuario?.mod_vehi }}</ion-label>
         </ion-item>
       </ion-list>
-
-      <br><br>
 
       <ion-label>
         <h1>Ajustes</h1>
       </ion-label>
-      <br>
       <ion-list>
-        <ion-item button="true" (click)="irConfiguracion()">
+        <ion-item button (click)="irConfiguracion()">
           <ion-icon name="settings-outline" slot="start"></ion-icon>
           <ion-label>Configuración</ion-label>
         </ion-item>
-
-        <ion-item button="true" (click)="verPoliticas()">
+        <ion-item button (click)="irTerminos()">
           <ion-icon name="document-text-outline" slot="start"></ion-icon>
-          <ion-label>Políticas de la empresa</ion-label>
+          <ion-label>Términos & condiciones</ion-label>
         </ion-item>
-
-        <ion-item button="true" (click)="cerrarSesion()">
+        <ion-item button (click)="cerrarSesion()">
           <ion-icon name="log-out-outline" slot="start"></ion-icon>
           <ion-label>Cerrar sesión</ion-label>
         </ion-item>
       </ion-list>
 
-    
       <div class="card-container">
-        <ion-card class="card-verde">
+        <ion-card class="card-verde" *ngIf="usuario?.tip_user === 'Pasajero'">
           <ion-card-content>
             <ion-icon name="cash-outline" class="icon-grande"></ion-icon>
             <h2>Método de Pago</h2>
           </ion-card-content>
         </ion-card>
-
         <ion-card class="card-gris">
           <ion-card-content>
             <ion-icon name="list-outline" class="icon-grande"></ion-icon>
@@ -94,61 +81,52 @@
           </ion-card-content>
         </ion-card>
       </div>
-
-      <style>
-        .rectangulo {
-          width: 100vw;
-          height: 100vh;
-          background-color: white;
-          padding: 40px;
-          box-sizing: border-box;
-          overflow-y: auto;
-        }
-
-        .container {
-          display: flex;
-          flex-direction: column;
-          justify-content: flex-end;
-          align-items: stretch;
-          width: 100%;
-          height: 100%;
-        }
-
-        h2, h3 {
-          text-align: left;
-        }
-
-        h1 {
-          font-size: 1.5rem;
-          text-align: left;
-        }
-
-        .card-container {
-          display: flex;
-          justify-content: space-between;
-          margin-top: 20px;
-        }
-
-        .card-verde {
-          background-color: #28a745;
-          width: 48%;
-        }
-
-        .card-gris {
-          background-color: #242222;
-          width: 48%;
-        }
-
-        .icon-grande {
-          font-size: 40px;
-          color: white;
-        }
-
-        ion-card h2 {
-          color: white;
-          text-align: center;
-        }
-      </style>
     </div>
   </div>
+
+  <style>
+    .rectangulo {
+      padding: 20px;
+      background-color: white;
+      box-sizing: border-box;
+      overflow-y: auto;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+
+    h1 {
+      font-size: 1.5rem;
+      margin: 10px 0;
+    }
+
+    .card-container {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 20px;
+    }
+
+    .card-verde {
+      background-color: #28a745;
+      width: 48%;
+    }
+
+    .card-gris {
+      background-color: #242222;
+      width: 48%;
+    }
+
+    .icon-grande {
+      font-size: 40px;
+      color: white;
+    }
+
+    ion-card h2 {
+      color: white;
+      text-align: center;
+    }
+  </style>
 </ion-content>

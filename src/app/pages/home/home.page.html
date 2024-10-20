@@ -11,17 +11,22 @@
     <ion-tab-bar slot="bottom">
 
       <ion-tab-button tab="inicio-app" (click)="onTabChange($event)">
-        <ion-icon name="home"></ion-icon>
+        <ion-icon name="home-sharp"></ion-icon>
         <label for="inicio-app">Inicio</label>
       </ion-tab-button>
 
       <ion-tab-button tab="administrador" *ngIf="usuario.tip_user=='Administrador'" (click)="onTabChange($event)">
-        <ion-icon name="construct"></ion-icon>
+        <ion-icon name="construct-sharp"></ion-icon>
         <label for="administrador">Administración</label>
       </ion-tab-button>
 
+      <ion-tab-button tab="viajes" (click)="onTabChange($event)">
+        <ion-icon name="car-sharp"></ion-icon>
+        <label for="viajes">Viajes</label>
+      </ion-tab-button>
+
       <ion-tab-button tab="perfil" (click)="onTabChange($event)">
-        <ion-icon name="person"></ion-icon>
+        <ion-icon name="person-sharp"></ion-icon>
         <label for="perfil">Perfil</label>
       </ion-tab-button>
 

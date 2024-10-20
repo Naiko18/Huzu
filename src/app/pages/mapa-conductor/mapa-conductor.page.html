@@ -7,16 +7,22 @@
 <ion-content>
   <div id="map_html"></div>
 
-  <ion-card class="comuna-card">
+  <ion-card class="comuna-card" *ngIf="usuario?.tip_user === 'Conductor'">
     <ion-card-header>
       <ion-card-title>Detalles del viaje</ion-card-title>
     </ion-card-header>
     
     <ion-card-content>
-     
+      
       <ion-item>
         <ion-icon slot="start" name="location"></ion-icon>
-        <ion-input type="text" placeholder="Ingrese comuna"></ion-input>
+        <ion-input type="text" placeholder="Ingrese punto de partida"></ion-input>
+      </ion-item>
+
+
+      <ion-item>
+        <ion-icon slot="start" name="location"></ion-icon>
+        <ion-input type="text" placeholder="Ingrese comuna de destino"></ion-input>
       </ion-item>
       
       
@@ -49,7 +55,7 @@
       border-radius: 10px;
       z-index: 1000;
     }
-
+ 
     .confirmar-destino {
       margin-top: 10px;
     }

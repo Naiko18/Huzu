@@ -41,10 +41,6 @@ const routes: Routes = [
     
   },
   {
-    path: 'mapa',
-    loadChildren: () => import('./pages/mapa/mapa.module').then( m => m.MapaPageModule)
-  },
-  {
     path: 'mapa-conductor',
     loadChildren: () => import('./pages/mapa-conductor/mapa-conductor.module').then( m => m.MapaConductorPageModule)
   },
@@ -53,9 +49,15 @@ const routes: Routes = [
     loadChildren: () => import('./pages/inicio-app/inicio-app.module').then( m => m.InicioAppPageModule)
   },
   {
+    path: 'terminos',
+    loadChildren: () => import('./pages/terminos/terminos.module').then( m => m.TerminosPageModule)
+  },
+  {
     path: '**',
     loadChildren: () => import('./pages/error404/error404.module').then( m => m.Error404PageModule)
   },
+  
+
 
 
 

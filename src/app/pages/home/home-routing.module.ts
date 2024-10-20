@@ -24,12 +24,12 @@ const routes: Routes = [
         loadChildren: () => import('../administrador/administrador.module').then( m => m.AdministradorPageModule)
       },
       {
-        path: 'mapa',
-        loadChildren: () => import('../mapa/mapa.module').then( m => m.MapaPageModule)
-      },
-      {
         path: 'mapa-conductor',
         loadChildren: () => import('../mapa-conductor/mapa-conductor.module').then( m => m.MapaConductorPageModule)
+      },
+      {
+        path: 'terminos',
+        loadChildren: () => import('../terminos/terminos.module').then( m => m.TerminosPageModule)
       },
       {
         path: '',  
