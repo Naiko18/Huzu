@@ -53,9 +53,14 @@ const routes: Routes = [
     loadChildren: () => import('./pages/terminos/terminos.module').then( m => m.TerminosPageModule)
   },
   {
+    path: 'mapa-pasajero',
+    loadChildren: () => import('./pages/mapa-pasajero/mapa-pasajero.module').then( m => m.MapaPasajeroPageModule)
+  },
+  {
     path: '**',
     loadChildren: () => import('./pages/error404/error404.module').then( m => m.Error404PageModule)
   },
+
   
 
 

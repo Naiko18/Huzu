@@ -162,7 +162,7 @@ export class MapaConductorPage implements OnInit {
       ubicacionDestino: this.direccion,
       distancia: this.distancia_metros,
       coordenadasDestino: `${this.latitud}, ${this.longitud}`,
-      ruta: `${this.ruta}`,
+      ruta: JSON.stringify(this.ruta),
       fecha: new Date(),
       nombreConductor: this.usuario?.nom_usuario,
       asientosDisponibles: 4,

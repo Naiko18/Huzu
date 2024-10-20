@@ -32,6 +32,10 @@ const routes: Routes = [
         loadChildren: () => import('../terminos/terminos.module').then( m => m.TerminosPageModule)
       },
       {
+        path: 'mapa-pasajero',
+        loadChildren: () => import('../mapa-pasajero/mapa-pasajero.module').then( m => m.MapaPasajeroPageModule)
+      },
+      {
         path: '',  
         redirectTo: 'inicio-app',
         pathMatch: 'full' 

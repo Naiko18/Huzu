@@ -71,7 +71,7 @@ export class ViajesPage implements OnInit {
 
   irmapaUsuario() {
     
-    this.route.navigate(['/home/mapa-conductor']);
+    this.route.navigate(['/home/mapa-pasajero']);
   
   }
 

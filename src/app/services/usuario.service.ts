@@ -29,6 +29,7 @@ export interface Viaje {
   tiempoEstimado: number; 
   estado: 'pendiente' | 'en curso' | 'finalizado'; 
   pasajeros: string[]; 
+
 }
 
 export function mayorDeEdadValidator(control: AbstractControl): ValidationErrors | null {
