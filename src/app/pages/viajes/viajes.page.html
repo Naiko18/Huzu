@@ -31,17 +31,19 @@
               <ion-icon slot="start" name="person"></ion-icon>
               <ion-label>Conductor: {{ viaje.nombreConductor }}</ion-label>
             </ion-item>
+            <!--
             <ion-item>
               <ion-icon slot="start" name="navigate"></ion-icon>
               <ion-label>Ubicación Actual: {{ viaje.ubicacionActual }}</ion-label>
             </ion-item>
+            -->
             <ion-item>
               <ion-icon slot="start" name="location"></ion-icon>
               <ion-label>Destino: {{ viaje.ubicacionDestino }}</ion-label>
             </ion-item>
             <ion-item>
               <ion-icon slot="start" name="map"></ion-icon>
-              <ion-label>Distancia: {{ viaje.distancia }} metros</ion-label>
+              <ion-label>Distancia: {{ (viaje.distancia / 1000).toFixed(1) }} Kilometros</ion-label>
             </ion-item>
             <ion-item>
               <ion-icon slot="start" name="time"></ion-icon>

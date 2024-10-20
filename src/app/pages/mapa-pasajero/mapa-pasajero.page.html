@@ -4,10 +4,41 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content >
-
+<ion-content>
   <div id="map_html"></div>
 
+  <ion-card class="comuna-card">
+    <ion-card-header>
+      <ion-card-title>¿Dónde te diriges?</ion-card-title>
+    </ion-card-header>
+    
+    <ion-card-content>
+      
+      <ion-item>
+        <ion-icon slot="start" name="location"></ion-icon>
+        <ion-input type="text" placeholder="Ingrese parada"></ion-input>
+      </ion-item>
+   
+      <ion-button class="confirmar-destino" color="dark" expand="block">Aceptar Viaje</ion-button>
+    </ion-card-content>
+  </ion-card>
+ 
+  <style>
+    #map_html {
+      height: 100%;
+    }
 
-
+    .comuna-card {
+      position: absolute;
+      bottom: 20px;
+      left: 10px;
+      right: 10px;
+      border-radius: 10px;
+      z-index: 1000;
+    }
+ 
+    .confirmar-destino {
+      margin-top: 10px;
+    }
+  </style>
 </ion-content>
