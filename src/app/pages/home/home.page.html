@@ -15,9 +15,9 @@
         <label for="inicio-app">Inicio</label>
       </ion-tab-button>
 
-      <ion-tab-button tab="administrador" *ngIf="usuario.tip_user=='Administrador'" (click)="onTabChange($event)">
+      <ion-tab-button tab="admininicio" *ngIf="usuario.tip_user=='Administrador'" (click)="onTabChange($event)">
         <ion-icon name="construct-sharp"></ion-icon>
-        <label for="administrador">Administración</label>
+        <label for="admininicio">Administración</label>
       </ion-tab-button>
 
       <ion-tab-button tab="viajes" (click)="onTabChange($event)">
@@ -29,7 +29,12 @@
         <ion-icon name="person-sharp"></ion-icon>
         <label for="perfil">Perfil</label>
       </ion-tab-button>
-
+      <!--
+      <ion-tab-button tab="administrador" *ngIf="usuario.tip_user=='Administrador'" (click)="onTabChange($event)">
+        <ion-icon name="construct-sharp"></ion-icon>
+        <label for="administrador">Administración</label>
+      </ion-tab-button>
+      -->
     </ion-tab-bar>
   </ion-tabs>
 </ion-content>

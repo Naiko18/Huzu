@@ -6,11 +6,12 @@ import 'leaflet-routing-machine';
 import { UsuarioService } from 'src/app/services/usuario.service';
 
 @Component({
-  selector: 'app-mapa-pasajero',
-  templateUrl: './mapa-pasajero.page.html',
-  styleUrls: ['./mapa-pasajero.page.scss'],
+  selector: 'app-mapa-conductor-rutas',
+  templateUrl: './mapa-conductor-rutas.page.html',
+  styleUrls: ['./mapa-conductor-rutas.page.scss'],
 })
-export class MapaPasajeroPage implements OnInit {
+export class MapaConductorRutasPage implements OnInit {
+
   private map: L.Map | undefined;
   private geocoder: any;
   private circle: L.Circle | undefined;
@@ -139,12 +140,12 @@ export class MapaPasajeroPage implements OnInit {
     }
   }
 
-  public iniciarViaje() {
+  public finalizarViaje() {
     
-    if (this.viaje.estado === 'Pendiente') {
-      this.viaje.estado = 'En curso';
-      localStorage.setItem('viajeConfirmado', JSON.stringify(this.viaje));
-    }
+    if (this.viaje && this.viaje.estado === 'En curso') {
+      this.viaje.estado = 'Finalizado';
+      localStorage.setItem('viajeConfirmado', JSON.stringify(this.viaje)); 
+    } 
   }
 
 }

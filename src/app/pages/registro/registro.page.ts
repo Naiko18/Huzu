@@ -83,12 +83,12 @@ export class RegistroPage implements OnInit {
 
   private async presentAlert(message: string) {
     const alert = await this.alertController.create({
-      header: 'Error',
+      header: 'Alerta',
       message: message,
       buttons: this.alertButtons
       
     });
-  
+   
     await alert.present();
   }
 

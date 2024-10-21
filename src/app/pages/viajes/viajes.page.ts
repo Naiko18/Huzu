@@ -82,4 +82,11 @@ export class ViajesPage implements OnInit {
 
   }
 
+  verViaje(){
+
+    this.route.navigate(['/home/mapa-conductor-rutas'])
+
+  }
+
+
 }

@@ -27,7 +27,7 @@ export interface Viaje {
   nombreConductor: string; 
   asientosDisponibles: number; 
   tiempoEstimado: number; 
-  estado: 'pendiente' | 'en curso' | 'finalizado'; 
+  estado: 'Pendiente' | 'En curso' | 'Finalizado'; 
   pasajeros: string[]; 
 
 }
@@ -159,7 +159,7 @@ export class UsuarioService {
     const nuevoViaje: Viaje = {
         ...viaje,
         id: this.idCounter++, 
-        estado: 'pendiente',
+        estado: 'Pendiente',
         pasajeros: [], 
     };
     this.viajes.push(nuevoViaje);

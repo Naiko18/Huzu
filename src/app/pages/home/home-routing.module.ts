@@ -36,6 +36,22 @@ const routes: Routes = [
         loadChildren: () => import('../mapa-pasajero/mapa-pasajero.module').then( m => m.MapaPasajeroPageModule)
       },
       {
+        path: 'listadoviaje',
+        loadChildren: () => import('../listadoviaje/listadoviaje.module').then( m => m.ListadoviajePageModule)
+      },
+      {
+        path: 'metodopago',
+        loadChildren: () => import('../metodopago/metodopago.module').then( m => m.MetodopagoPageModule)
+      },
+      {
+        path: 'admininicio',
+        loadChildren: () => import('../admininicio/admininicio.module').then( m => m.AdmininicioPageModule)
+      },
+      {
+        path: 'mapa-conductor-rutas',
+        loadChildren: () => import('../mapa-conductor-rutas/mapa-conductor-rutas.module').then( m => m.MapaConductorRutasPageModule)
+      },
+      {
         path: '',  
         redirectTo: 'inicio-app',
         pathMatch: 'full' 

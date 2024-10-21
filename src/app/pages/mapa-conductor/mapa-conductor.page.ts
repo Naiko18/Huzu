@@ -167,7 +167,7 @@ export class MapaConductorPage implements OnInit {
       nombreConductor: this.usuario?.nom_usuario,
       asientosDisponibles: 4,
       tiempoEstimado: this.tiempoMinutos,
-      estado: 'pendiente',
+      estado: 'Pendiente',
       pasajeros: [],
       costoTotal: this.costoTotal.toFixed(2),
     };
@@ -176,4 +176,14 @@ export class MapaConductorPage implements OnInit {
     localStorage.setItem('viajeConfirmado', JSON.stringify(viajeData));
     this.router.navigate(['/home/viajes']);
   }
+
+  viajependiente(){
+
+    
+
+
+  }
+
+
+
 }

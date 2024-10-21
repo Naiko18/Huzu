@@ -57,14 +57,25 @@ const routes: Routes = [
     loadChildren: () => import('./pages/mapa-pasajero/mapa-pasajero.module').then( m => m.MapaPasajeroPageModule)
   },
   {
+    path: 'listadoviaje',
+    loadChildren: () => import('./pages/listadoviaje/listadoviaje.module').then( m => m.ListadoviajePageModule)
+  },
+  {
+    path: 'metodopago',
+    loadChildren: () => import('./pages/metodopago/metodopago.module').then( m => m.MetodopagoPageModule)
+  },
+  {
+    path: 'admininicio',
+    loadChildren: () => import('./pages/admininicio/admininicio.module').then( m => m.AdmininicioPageModule)
+  },
+  {
+    path: 'mapa-conductor-rutas',
+    loadChildren: () => import('./pages/mapa-conductor-rutas/mapa-conductor-rutas.module').then( m => m.MapaConductorRutasPageModule)
+  },
+  {
     path: '**',
     loadChildren: () => import('./pages/error404/error404.module').then( m => m.Error404PageModule)
-  },
-
-  
-
-
-
+  }
 
 ];
 

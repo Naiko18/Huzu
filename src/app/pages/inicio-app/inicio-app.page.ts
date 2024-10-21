@@ -1,6 +1,7 @@
 import { Component, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { GestureController } from '@ionic/angular';
+import { UsuarioService } from 'src/app/services/usuario.service';
 
 @Component({
   selector: 'app-inicio-app',
@@ -10,7 +11,9 @@ import { GestureController } from '@ionic/angular';
 export class InicioAppPage implements AfterViewInit {  
   @ViewChild('slides', { static: false }) slides!: ElementRef;
 
-  constructor(private gestureCtrl: GestureController, private route: Router) {}
+  usuario: any;
+
+  constructor(private gestureCtrl: GestureController, private route: Router, private usuarioService: UsuarioService) {}
 
   ngAfterViewInit() { 
     const gesture = this.gestureCtrl.create({
