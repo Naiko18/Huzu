@@ -6,10 +6,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./listadoviaje.page.scss'],
 })
 export class ListadoviajePage implements OnInit {
+  
+  viajes: any[] = [];
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit() {
+    const viajeGuardado = localStorage.getItem('viajeConfirmado');
+    if (viajeGuardado) {
+      const viaje = JSON.parse(viajeGuardado);
+      if (viaje.estado === 'Finalizado') {
+        this.viajes = [viaje]; 
+      }
+    }
   }
-
 }

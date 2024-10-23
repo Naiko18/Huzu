@@ -1,0 +1,43 @@
+  
+    ion-header {
+        display: none;
+    }
+
+    .custom-button {
+    --background: #1c2120;
+    --color: white;
+    --border-radius: 10px;
+    height: auto;
+    padding: 10px;
+    text-align: left;
+    display: flex;
+    justify-content: space-between;
+  
+    .button-content {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+    }
+  
+    .left-section {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-align: left;
+    }
+  
+    .right-section {
+      display: flex;
+      align-items: center;
+    }
+  
+    h2 {
+      margin: 0;
+      font-size: 1.2rem;
+    }
+  
+    p {
+      margin: 0;
+      font-size: 0.9rem;
+    }
+  }
