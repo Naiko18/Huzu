@@ -1,0 +1,27 @@
+  ion-header {
+    --background: #1c2120; 
+  }
+
+
+  .start-journey {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+  }
+
+  .start-journey ion-label {
+    display: flex;
+    align-items: center;
+    font-size: 1.2rem;
+    color: #333;
+  }
+
+  .start-journey h2 {
+    margin-right: 10px;
+  }
+
+  .arrow-right {
+    font-size: 1.3rem;
+    
+  }

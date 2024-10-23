@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-metodopago',
@@ -7,9 +8,31 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MetodopagoPage implements OnInit {
 
-  constructor() { }
+  selectedPaymentMethod: string = 'Tarjeta';
+
+  constructor(private route: Router) { }
 
   ngOnInit() {
   }
+
+  segmentChanged(event: any) {
+    this.selectedPaymentMethod = event.detail.value;
+  }
+
+  isTarjetaSelected(): boolean {
+    return this.selectedPaymentMethod === 'Tarjeta';
+  }
+
+  realizarPago(metodo: string) {
+    console.log('Realizando pago con:', metodo);
+    
+  }
+
+  volverPerfil(){
+
+    this.route.navigate(['/home/perfil']);
+
+  }
+
 
 }

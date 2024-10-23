@@ -68,13 +68,13 @@
       </ion-list>
 
       <div class="card-container">
-        <ion-card class="card-verde" *ngIf="usuario?.tip_user === 'Pasajero'">
+        <ion-card class="card-verde" *ngIf="usuario?.tip_user === 'Pasajero'" (click)="irMetodoPago()">
           <ion-card-content>
             <ion-icon name="cash-outline" class="icon-grande"></ion-icon>
             <h2>Método de Pago</h2>
           </ion-card-content>
         </ion-card>
-        <ion-card class="card-gris">
+        <ion-card class="card-gris" (click)="irListadoViaje()">
           <ion-card-content>
             <ion-icon name="list-outline" class="icon-grande"></ion-icon>
             <h2>Listado de Viajes</h2>

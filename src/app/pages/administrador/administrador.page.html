@@ -62,17 +62,17 @@
       <ion-card-content>
         <form [formGroup]="usuario">
           <br>
-          <ion-input formControlName="nom_usuario" type="text" fill="outline" label="Nombre de usuario" labelPlacement="floating"></ion-input>
+          <ion-input formControlName="nom_usuario" type="text" fill="outline" label="Nombre de usuario" labelPlacement="floating" helperText="Ejemplo: nicolas" errorText="Formato invalido"></ion-input>
           <br>
-          <ion-input formControlName="contraseña" type="password" fill="outline" label="Contraseña" labelPlacement="floating"></ion-input>
+          <ion-input formControlName="contraseña" type="password" fill="outline" label="Contraseña" labelPlacement="floating" errorText="Formato invalido"></ion-input>
           <br>
-          <ion-input formControlName="rep_contraseña" type="password" fill="outline" label="Repetir Contraseña" labelPlacement="floating"></ion-input>
+          <ion-input formControlName="rep_contraseña" type="password" fill="outline" label="Repetir Contraseña" labelPlacement="floating" errorText="Formato invalido"></ion-input>
           <br>
-          <ion-input formControlName="correo" type="email" fill="outline" label="Correo" labelPlacement="floating"></ion-input>
+          <ion-input formControlName="correo" type="email" fill="outline" label="Correo" labelPlacement="floating" helperText="Ejemplo: nicolas@duocuc.cl " errorText="Formato invalido"></ion-input>
           <br>
-          <ion-input formControlName="rut" type="text" fill="outline" label="Rut" labelPlacement="floating"></ion-input>
+          <ion-input formControlName="rut" type="text" fill="outline" label="Rut" labelPlacement="floating" helperText="Ejemplo: 11111111-1 " errorText="Ingrese un rut valido"></ion-input>
           <br>
-          <ion-input formControlName="fec_nacimiento" type="date" fill="outline" label="Fecha de nacimiento" labelPlacement="floating"></ion-input>
+          <ion-input formControlName="fec_nacimiento" type="date" fill="outline" label="Fecha de nacimiento" labelPlacement="floating" errorText="Debes ser mayor de edad"></ion-input>
           <br>
           <ion-select formControlName="genero" fill="outline" label="Género" labelPlacement="floating">
             <ion-select-option value="masculino">Masculino</ion-select-option>
@@ -93,11 +93,11 @@
           
           <br>
           <ng-container *ngIf="tieneVehiculo">
-            <ion-input formControlName="patente" type="text" fill="outline" label="Patente" labelPlacement="floating"></ion-input>
+            <ion-input formControlName="patente" type="text" fill="outline" label="Patente" labelPlacement="floating" helperText="Ejemplo:XD XD 13" errorText="Formato invalido"></ion-input>
             <br>
-            <ion-input formControlName="cantidad_asientos" type="number" fill="outline" label="Cantidad de Asientos" labelPlacement="floating"></ion-input>
+            <ion-input formControlName="cantidad_asientos" type="number" fill="outline" label="Cantidad de Asientos" labelPlacement="floating" errorText="Formato invalido"></ion-input>
             <br>
-            <ion-input formControlName="mod_vehi" type="text" fill="outline" label="Modelo Vehículo" labelPlacement="floating"></ion-input>
+            <ion-input formControlName="mod_vehi" type="text" fill="outline" label="Modelo Vehículo" labelPlacement="floating" helperText="Ejemplo:Ford Territory" errorText="Formato invalido"></ion-input>
           </ng-container>
           <br>
   

@@ -34,6 +34,12 @@ export class MapaConductorPage implements OnInit {
   ruta: any;
   estado: 'pendiente' | 'en curso' | 'finalizado' | undefined;
 
+  INFLATION_RATE = 0.065;  
+  BASE_COSTO_POR_KM = 0.70;
+  ADJUSTED_COSTO_POR_KM = this.BASE_COSTO_POR_KM * (1 + this.INFLATION_RATE);
+
+
+
   constructor(private usuarioService: UsuarioService, private router: Router) {}
 
   ngOnInit() {
@@ -143,6 +149,7 @@ export class MapaConductorPage implements OnInit {
 
  
   private calcularCostoTotal(distancia: number): number {
+    const adjustedCostPerKm = this.COSTO_POR_KM * (1 + 0.065);
     return Math.round(distancia * this.COSTO_POR_KM * 1000) / 1000;
   }
 

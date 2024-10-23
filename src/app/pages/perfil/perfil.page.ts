@@ -39,6 +39,18 @@ export class PerfilPage implements OnInit {
     this.route.navigate(['/home/terminos']);
   }
 
+  irMetodoPago(){
+
+    this.route.navigate(['/home/metodopago'])
+
+  }
+
+  irListadoViaje(){
+
+    this.route.navigate(['/home/listadoviaje'])
+
+  }
+
 
 
 }

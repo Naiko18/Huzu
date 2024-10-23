@@ -1,13 +1,109 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
-    <ion-title>metodopago</ion-title>
+    <ion-segment value="Tarjeta" (ionChange)="segmentChanged($event)">
+      <ion-segment-button value="Tarjeta">
+        <ion-label>Tarjeta</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="Efectivo">
+        <ion-label>Efectivo</ion-label>
+      </ion-segment-button>
+    </ion-segment>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">metodopago</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content>
+  <div *ngIf="isTarjetaSelected()">
+    <div class="container">
+      <div class="rectangulo">
+        <style>
+          .rectangulo {
+              width: 100vw; 
+              height: auto; 
+              border-radius: 2% 2% 0 0;
+              margin: 0; 
+              display: flex; 
+              flex-direction: column; 
+              background-color: rgb(255, 255, 255);
+              padding: 40px; 
+              box-sizing: border-box; 
+              overflow-y: auto;
+          }
+          
+          .container {
+              display: flex; 
+              flex-direction: column;
+              justify-content: flex-end; 
+              align-items: stretch;
+              width: 100%; 
+              height: 100%;
+              text-align: center; 
+          }
+
+          .titulo {
+              font-size: 24px; 
+              font-weight: bold; 
+              margin-bottom: 20px; 
+          }
+          ion-label{
+
+            color: #1c2120;
+
+          }
+
+          ion-input {
+              --border-radius: 20px; 
+              --padding-start: 10px; 
+              --padding-end: 10px; 
+              margin-bottom: 15px;
+          }
+
+          .expiry-cvv {
+              display: flex;
+              justify-content: space-between;
+              margin-bottom: 15px;
+          }
+
+          .expiry, .cvv {
+              display: flex;
+              flex-direction: column;
+              flex: 1;
+              margin-right: 10px;
+          }
+
+          .expiry:last-child, .cvv:last-child {
+              margin-right: 0;
+          }
+        </style>
+
+        <div class="titulo">Tarjeta</div>
+        <ion-input type="text" fill="outline" label="Numero de Tarjeta" labelPlacement="floating" helperText="Ejemplo: 1234 5678 1234 5678">
+        </ion-input>
+
+        <div class="expiry-cvv">
+          <div class="expiry">
+            <ion-input type="text" fill="outline" label="Fecha de Expiración" labelPlacement="floating" helperText="Ejemplo: 01/01"></ion-input>
+          </div>
+          <div class="cvv">
+            <ion-input type="text" fill="outline" label="CCV" labelPlacement="floating" helperText="Ejemplo: 123"></ion-input>
+          </div>
+        </div>
+
+        <ion-input type="text" fill="outline" label="País" labelPlacement="floating" helperText="Ejemplo: Chile"></ion-input>
+        
+        <ion-input type="text" fill="outline" label="Nombre Propietario/a" labelPlacement="floating" helperText="Ejemplo: Benjamín Contreras"></ion-input>
+
+        <ion-button color="dark" expand="block">Guardar Método de Pago</ion-button>
+        <br>
+        <div class="start-journey">
+          <ion-label (click)="volverPerfil()">
+            <ion-icon name="arrow-back-outline" class="arrow-right"></ion-icon>
+            <h2>Volver</h2>
+          </ion-label>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="!isTarjetaSelected()">
+  </div>
 </ion-content>
