@@ -52,6 +52,10 @@ const routes: Routes = [
         loadChildren: () => import('../mapa-conductor-rutas/mapa-conductor-rutas.module').then( m => m.MapaConductorRutasPageModule)
       },
       {
+        path: 'editarperfil',
+        loadChildren: () => import('../editarperfil/editarperfil.module').then( m => m.EditarperfilPageModule)
+      },
+      {
         path: '',  
         redirectTo: 'inicio-app',
         pathMatch: 'full' 

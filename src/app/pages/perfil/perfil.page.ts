@@ -51,6 +51,10 @@ export class PerfilPage implements OnInit {
 
   }
 
+  irEditarPerfil(){
+    this.route.navigate(['/home/editarperfil'])
+  }
+
 
 
 }

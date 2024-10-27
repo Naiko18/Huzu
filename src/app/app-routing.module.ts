@@ -73,9 +73,14 @@ const routes: Routes = [
     loadChildren: () => import('./pages/mapa-conductor-rutas/mapa-conductor-rutas.module').then( m => m.MapaConductorRutasPageModule)
   },
   {
+    path: 'editarperfil',
+    loadChildren: () => import('./pages/editarperfil/editarperfil.module').then( m => m.EditarperfilPageModule)
+  },
+  {
     path: '**',
     loadChildren: () => import('./pages/error404/error404.module').then( m => m.Error404PageModule)
   }
+
 
 ];
 

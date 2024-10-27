@@ -53,10 +53,12 @@
         <h1>Otros</h1>
       </ion-label>
       <ion-list>
+        <!--
         <ion-item button (click)="irConfiguracion()">
           <ion-icon name="settings-outline" slot="start"></ion-icon>
           <ion-label>Configuración</ion-label>
         </ion-item>
+        -->
         <ion-item button (click)="irTerminos()">
           <ion-icon name="document-text-outline" slot="start"></ion-icon>
           <ion-label>Términos & condiciones</ion-label>
@@ -80,6 +82,14 @@
             <h2>Listado de Viajes</h2>
           </ion-card-content>
         </ion-card>
+        <ion-card class="card-morada" (click)="irEditarPerfil()">
+          <ion-card-content>
+            <ion-icon name="pencil-outline" class="icon-grande"></ion-icon>
+            <h2>Editar Perfil</h2>
+          </ion-card-content>
+        </ion-card>
+      
+      
       </div>
     </div>
   </div>
@@ -117,6 +127,11 @@
 
     .card-gris {
       background-color: #242222;
+      width: 48%;
+    }
+
+    .card-morada {
+      background-color: #c04bdd;
       width: 48%;
     }
 

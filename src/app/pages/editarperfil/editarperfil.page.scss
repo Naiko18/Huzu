@@ -1,12 +1,12 @@
+ion-header {
+    display: none;
+}
+
 ion-content::part(background){
 
     background: #272727;
 
 }
-
-ion-header {
-    display: none;
-  }
 
 .labellink{
 
@@ -20,7 +20,7 @@ ion-item {
   }
   
   ion-label {
-    font-size: 15px;
+    font-size: 15px; 
     color: #a1a1a1; 
     text-align: left; 
   }
@@ -33,4 +33,3 @@ ion-item {
     display: flex;
     flex-direction: column;
   }
-

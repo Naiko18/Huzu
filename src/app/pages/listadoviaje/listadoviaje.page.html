@@ -10,7 +10,7 @@
       <ion-button class="custom-button" expand="block" id="open-modal-{{ viaje.id }}" color="dark">
         <div class="button-content">
           <div class="left-section">
-            <h2>{{ viaje.nombreConductor }}</h2>
+            <h2>{{ viaje.nombreConductor | titlecase}}</h2>
             <p>Ver detalles ➔</p>
           </div>
           <div class="right-section">
@@ -26,7 +26,7 @@
             <ion-list>
               <ion-item>
                 <ion-icon slot="start" name="person"></ion-icon>
-                <ion-label>Conductor/a: {{ viaje.nombreConductor }}</ion-label>
+                <ion-label>Conductor/a: {{ viaje.nombreConductor | titlecase}}</ion-label>
               </ion-item>
               <ion-item>
                 <ion-icon slot="start" name="id-card"></ion-icon>
@@ -42,7 +42,7 @@
               </ion-item>
               <ion-item>
                 <ion-icon slot="start" name="time"></ion-icon>
-                <ion-label>Tiempo Estimado: {{ viaje.tiempoEstimado }} minutos</ion-label>
+                <ion-label>Tiempo total: {{ viaje.tiempoEstimado }} minutos</ion-label>
               </ion-item>
               <ion-item>
                 <ion-icon slot="start" name="cash"></ion-icon>
