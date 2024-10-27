@@ -12,7 +12,7 @@ export interface Usuario {
   genero: string;
   pos_vehiculo?: string;
   patente?: string; 
-  cantidad_asientos?: number; 
+  cantidad_asientos?: string; 
   mod_vehi?: string;
   tip_user?: string; 
 }
@@ -60,10 +60,14 @@ export class UsuarioService {
       contraseña: 'Admin@123',
       rep_contraseña: 'Admin@123',
       correo: 'admin@duocuc.cl',
-      rut: '98765432-1',
+      rut: '11111111-1',
       fec_nacimiento: '2000-01-01',
       genero: 'Otro',
-      tip_user: 'Administrador'
+      tip_user: 'Administrador',
+      pos_vehiculo:'No',
+      patente:'',
+      mod_vehi:'',
+      cantidad_asientos:''
     });
   }
 

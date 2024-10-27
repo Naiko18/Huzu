@@ -195,6 +195,7 @@ export class EditarperfilPage implements OnInit {
     } else {
         this.presentAlert("Por favor, corrige los errores en el formulario.");
     }
+    this.route.navigate(['/home/perfil'])
 }
 
 }
