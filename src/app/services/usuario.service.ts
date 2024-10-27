@@ -172,5 +172,4 @@ export class UsuarioService {
     localStorage.setItem('viajes', JSON.stringify(viajesActualizados));
   }
 
-
 }

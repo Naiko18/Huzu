@@ -22,6 +22,7 @@ export class MapaPasajeroPage implements OnInit {
   latitud: number = 0;
   longitud: number = 0;
   direccion: string = '';
+  asientosDisponiblesTemp: number | undefined;
 
   constructor(private usuarioService: UsuarioService) { }
 
@@ -31,11 +32,13 @@ export class MapaPasajeroPage implements OnInit {
     const viajeGuardado = localStorage.getItem('viajeConfirmado');
       if (viajeGuardado) {
         this.viaje = JSON.parse(viajeGuardado); 
+        this.asientosDisponiblesTemp = this.viaje.asientosDisponibles;
       }
     
     setTimeout(() => {
       this.cargarRutaGuardada();
     }, 500); 
+    
   }
 
   private initMap() {
@@ -139,11 +142,17 @@ export class MapaPasajeroPage implements OnInit {
     }
   }
 
-  public iniciarViaje() {
-    
-    if (this.viaje.estado === 'Pendiente') {
-      this.viaje.estado = 'En curso';
-      localStorage.setItem('viajeConfirmado', JSON.stringify(this.viaje));
+  public reservarAsiento() {
+    if (this.viaje && this.viaje.id && this.asientosDisponiblesTemp && this.asientosDisponiblesTemp > 0) {
+      this.asientosDisponiblesTemp--; 
+  
+      this.viaje.asientosDisponibles = this.asientosDisponiblesTemp;
+  
+      const viajesGuardados = JSON.parse(localStorage.getItem('viajes') || '[]');
+      const viajeActualizado = viajesGuardados.map((viaje: any) => {
+        return viaje.id === this.viaje.id ? this.viaje : viaje; 
+      });
+      localStorage.setItem('viajes', JSON.stringify(viajeActualizado));
     }
   }
 

@@ -13,9 +13,6 @@
             <h2>{{ viaje.ubicacionDestino }}</h2>
             <p>Ver detalles ➔</p>
           </div>
-          <div class="right-section">
-            <p>{{ viaje.fecha | date:'dd/MM/yyyy' }}</p>
-          </div>
         </div>
       </ion-button>
 
@@ -46,13 +43,13 @@
               </ion-item>
               <ion-item>
                 <ion-icon slot="start" name="person"></ion-icon>
-                <ion-label>Asientos Disponibles: {{ viaje.asientosDisponibles}}</ion-label>
+                <ion-label>Asientos Disponibles: {{ viaje.asientosDisponibles }}</ion-label>
               </ion-item>
             </ion-list>
             <br>
             <br>
             <div class="botones">
-              <ion-button (click)="irmapaUsuario()" *ngIf="usuario?.tip_user === 'Pasajero'" color="dark" size="default">Tomar viaje</ion-button>
+              <ion-button (click)="irmapaUsuario()" *ngIf="usuario?.tip_user === 'Pasajero'" color="dark" size="default" [disabled]="viaje.asientosDisponibles === 0">Tomar viaje</ion-button>
               <ion-button *ngIf="usuario?.tip_user === 'Conductor'" color="dark" size="default" (click)="verViaje()">Ver viaje</ion-button>
               <ion-button *ngIf="usuario?.tip_user === 'Administrador'" color="danger" size="default" (click)="eliminarviaje(viaje.id)">Eliminar viaje</ion-button>
               <ion-button *ngIf="usuario?.tip_user === 'Conductor'" color="danger" size="default" (click)="cancelarViaje()">Cancelar viaje</ion-button>

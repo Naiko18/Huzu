@@ -18,6 +18,7 @@ export class ViajesPage implements OnInit {
   animacion: 'entrar' | 'salir' = 'entrar'; 
   viajes: any[] = [];
   costoTotal: number = 0;
+  asientosDisponiblesTemp: number | undefined;
   
 
   constructor(private usuarioService: UsuarioService, private route: Router) { }
@@ -34,6 +35,7 @@ export class ViajesPage implements OnInit {
         this.viajes = [];
     }
     
+    this.actualizarContadorAsientos();
   }
 
   ionViewWillEnter() {
@@ -95,6 +97,16 @@ export class ViajesPage implements OnInit {
     localStorage.setItem('viajeConfirmado', JSON.stringify(viajesActualizados));
 
     this.cargarViajes();
+  }
+
+  private actualizarContadorAsientos() {
+    const viajesGuardados = localStorage.getItem('viajeConfirmado');
+    if (viajesGuardados) {
+      const viaje = JSON.parse(viajesGuardados);
+      if (viaje.asientosDisponibles) {
+        this.asientosDisponiblesTemp = viaje.asientosDisponibles;
+      }
+    }
   }
 
   

@@ -11,15 +11,15 @@
     <ion-card-header>
       <ion-card-title>¿Dónde te diriges?</ion-card-title>
     </ion-card-header>
-    
+     
     <ion-card-content>
       
       <ion-item>
         <ion-icon slot="start" name="location"></ion-icon>
-        <ion-input type="text" placeholder="Ingrese parada"></ion-input>
+        <ion-label>Asientos Disponibles: {{ asientosDisponiblesTemp }}</ion-label>
       </ion-item>
    
-      <ion-button class="confirmar-destino" color="dark" expand="block" (click)="iniciarViaje()">Reservar Asiento</ion-button>
+      <ion-button class="confirmar-destino" color="dark" expand="block" (click)="reservarAsiento()" [disabled]="asientosDisponiblesTemp === 0">Reservar Asiento</ion-button>
     </ion-card-content>
   </ion-card>
  
