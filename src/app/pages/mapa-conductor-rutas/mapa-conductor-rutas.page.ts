@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import * as L from 'leaflet';
 import * as G from 'leaflet-control-geocoder';
 import 'leaflet-routing-machine';
-import { UsuarioService } from 'src/app/services/usuario.service';
+import { UsuarioService, Viaje } from 'src/app/services/usuario.service';
 
 @Component({
   selector: 'app-mapa-conductor-rutas',
@@ -142,10 +142,30 @@ export class MapaConductorRutasPage implements OnInit {
 
   public finalizarViaje() {
     
-    if (this.viaje && this.viaje.estado === 'En curso') {
-      this.viaje.estado = 'Finalizado';
-      localStorage.setItem('viajeConfirmado', JSON.stringify(this.viaje)); 
+    const viajesGuardadosStr = localStorage.getItem('viajes');
+    let viajesGuardados: Viaje[] = viajesGuardadosStr ? JSON.parse(viajesGuardadosStr) : [];
+
+    const viajeIndex = viajesGuardados.findIndex((v: Viaje) => v.id === this.viaje.id);
+
+    if (viajeIndex !== -1 && this.viaje.estado === 'En curso') {
+        this.viaje.estado = 'Finalizado';
+        viajesGuardados[viajeIndex] = this.viaje;
+        localStorage.setItem('viajes', JSON.stringify(viajesGuardados)); 
     } 
-  }
+}
+
+public iniciarViaje() {
+    
+    const viajesGuardadosStr = localStorage.getItem('viajes');
+    let viajesGuardados: Viaje[] = viajesGuardadosStr ? JSON.parse(viajesGuardadosStr) : [];
+
+    const viajeIndex = viajesGuardados.findIndex((v: Viaje) => v.id === this.viaje.id);
+
+    if (viajeIndex !== -1 && this.viaje.estado === 'Pendiente') { 
+        this.viaje.estado = 'En curso';
+        viajesGuardados[viajeIndex] = this.viaje;
+        localStorage.setItem('viajes', JSON.stringify(viajesGuardados));
+    }
+}
 
 }

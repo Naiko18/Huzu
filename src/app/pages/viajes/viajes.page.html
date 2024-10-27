@@ -4,76 +4,69 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <div class="container">
-    <div class="rectangulo">
-      <!--
-      <div class="mensajeInicio">
-        <ion-card class="mensaje"
-          [ngClass]="{ 
-            'animate__animated': true,
-            'animate__bounceIn': animacion === 'entrar',
-            'animate__bounceOut': animacion === 'salir'
-          }"
-          [style.animationDuration]="'2s'"
-          (animationend)="animacionSalir()">
-          {{ mensajeBienvenida }} {{ usuario?.nom_usuario | titlecase }}
-        </ion-card>
-      </div>
-       -->
-      <ng-container *ngIf="viajes.length > 0">
-        <ion-card class="viaje-card" *ngFor="let viaje of viajes">
-          <ion-card-header>
-            <ion-card-title>Viaje: </ion-card-title>
-          </ion-card-header>
-          <ion-card-content>
-            <ion-item>
-              <ion-icon slot="start" name="person"></ion-icon>
-              <ion-label>Conductor: {{ viaje.nombreConductor }}</ion-label>
-            </ion-item>
-            <!--
-            <ion-item>
-              <ion-icon name="card-outline" slot="start"></ion-icon>
-              <ion-label>RUT: {{ usuario?.rut }}</ion-label>
-            </ion-item>
-            -->
-            <!--
-            <ion-item>
-              <ion-icon slot="start" name="navigate"></ion-icon>
-              <ion-label>Ubicación Actual: {{ viaje.ubicacionActual }}</ion-label>
-            </ion-item>
-            -->
-            <ion-item>
-              <ion-icon slot="start" name="location"></ion-icon>
-              <ion-label>Destino: {{ viaje.ubicacionDestino }}</ion-label>
-            </ion-item>
-            <ion-item>
-              <ion-icon slot="start" name="map"></ion-icon>
-              <ion-label>Distancia: {{ (viaje.distancia / 1000).toFixed(1) }} Kilometros</ion-label>
-            </ion-item>
-            <ion-item>
-              <ion-icon slot="start" name="time"></ion-icon>
-              <ion-label>Tiempo Estimado: {{ viaje.tiempoEstimado }} minutos</ion-label>
-            </ion-item>
-            <ion-item>
-              <ion-icon slot="start" name="cash"></ion-icon>
-              <ion-label>Costo: {{ viaje.costoTotal | currency:'CLP' }}</ion-label>
-            </ion-item>
+<ion-content class="ion-padding">
+  <div *ngIf="viajes.length > 0; else noViajes">
+    <div *ngFor="let viaje of viajes">
+      <ion-button class="custom-button" expand="block" id="open-modal-{{ viaje.id }}" color="dark">
+        <div class="button-content">
+          <div class="left-section">
+            <h2>{{ viaje.ubicacionDestino }}</h2>
+            <p>Ver detalles ➔</p>
+          </div>
+          <div class="right-section">
+            <p>{{ viaje.fecha | date:'dd/MM/yyyy' }}</p>
+          </div>
+        </div>
+      </ion-button>
+
+      <ion-modal #modal trigger="open-modal-{{ viaje.id }}" [initialBreakpoint]="0.40" [breakpoints]="[0, 0.25, 0.5, 0.75]">
+        <ng-template>
+          <ion-content>
             <br>
-            <ion-button (click)="irmapaUsuario()" *ngIf="usuario?.tip_user === 'Pasajero'" color="dark" expand="block">Tomar viaje</ion-button>
-            <ion-button *ngIf="usuario?.tip_user === 'Conductor'" color="dark" expand="block" slot="start" (click)="verViaje()">Ver viaje</ion-button>
-            <ion-button *ngIf="usuario?.tip_user === 'Conductor'" color="danger" expand="block" slot="end" (click)="cancelarViaje()">Cancelar viaje</ion-button>
-          </ion-card-content>
-        </ion-card>
-      </ng-container>
-
-      <ng-template #noViajes>
-        <p>No hay viajes disponibles.</p>
-      </ng-template>
-
-      <ion-button *ngIf="usuario?.tip_user === 'Conductor'" (click)="irmapaConductor()" class="crear-viaje" color="dark" expand="block">Crear Viaje</ion-button>
+            <ion-list>
+              <ion-item>
+                <ion-icon slot="start" name="person"></ion-icon>
+                <ion-label>Conductor/a: {{ viaje.nombreConductor }}</ion-label>
+              </ion-item>
+              <ion-item>
+                <ion-icon slot="start" name="location"></ion-icon>
+                <ion-label>Destino: {{ viaje.ubicacionDestino }}</ion-label>
+              </ion-item>
+              <ion-item>
+                <ion-icon slot="start" name="map"></ion-icon>
+                <ion-label>Distancia: {{ (viaje.distancia / 1000).toFixed(1) }} km</ion-label>
+              </ion-item>
+              <ion-item>
+                <ion-icon slot="start" name="time"></ion-icon>
+                <ion-label>Tiempo Estimado: {{ viaje.tiempoEstimado }} minutos</ion-label>
+              </ion-item>
+              <ion-item>
+                <ion-icon slot="start" name="cash"></ion-icon>
+                <ion-label>Costo: {{ viaje.costoTotal | currency:'CLP' }}</ion-label>
+              </ion-item>
+              <ion-item>
+                <ion-icon slot="start" name="person"></ion-icon>
+                <ion-label>Asientos Disponibles: {{ viaje.asientosDisponibles}}</ion-label>
+              </ion-item>
+            </ion-list>
+            <br>
+            <br>
+            <div class="botones">
+              <ion-button (click)="irmapaUsuario()" *ngIf="usuario?.tip_user === 'Pasajero'" color="dark" size="default">Tomar viaje</ion-button>
+              <ion-button *ngIf="usuario?.tip_user === 'Conductor'" color="dark" size="default" (click)="verViaje()">Ver viaje</ion-button>
+              <ion-button *ngIf="usuario?.tip_user === 'Administrador'" color="danger" size="default" (click)="eliminarviaje(viaje.id)">Eliminar viaje</ion-button>
+              <ion-button *ngIf="usuario?.tip_user === 'Conductor'" color="danger" size="default" (click)="cancelarViaje()">Cancelar viaje</ion-button>
+            </div>
+          </ion-content>
+        </ng-template>
+      </ion-modal>
     </div>
   </div>
 
+  <ng-template #noViajes>
+    <p>No hay viajes disponibles.</p>
+  </ng-template>
+
+  <ion-button *ngIf="usuario?.tip_user === 'Conductor'" (click)="irmapaConductor()" class="crear-viaje" color="dark" expand="block">Crear Viaje</ion-button>
 </ion-content>
 

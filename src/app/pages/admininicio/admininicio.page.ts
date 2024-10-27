@@ -18,7 +18,7 @@ export class AdmininicioPage implements OnInit {
   }
 
   irCrudViaje(){
-
+    this.route.navigate(['/home/viajes']);
   }
 
 }

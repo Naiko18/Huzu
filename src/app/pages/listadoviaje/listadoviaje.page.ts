@@ -12,12 +12,21 @@ export class ListadoviajePage implements OnInit {
   constructor() {}
 
   ngOnInit() {
-    const viajeGuardado = localStorage.getItem('viajeConfirmado');
-    if (viajeGuardado) {
-      const viaje = JSON.parse(viajeGuardado);
-      if (viaje.estado === 'Finalizado') {
-        this.viajes = [viaje]; 
-      }
+    this.cargarViajesFinalizados();
+  }
+
+  cargarViajesFinalizados() {
+    const viajesGuardados = localStorage.getItem('viajes');
+
+    if (viajesGuardados) {
+      
+      const viajeParsed = JSON.parse(viajesGuardados);
+      this.viajes = Array.isArray(viajeParsed) ? viajeParsed : [viajeParsed];
+
+     
+      this.viajes = this.viajes.filter((viaje: any) => viaje.estado === 'Finalizado');
+    } else {
+      this.viajes = [];
     }
   }
 }

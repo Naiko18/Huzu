@@ -164,7 +164,13 @@ export class MapaConductorPage implements OnInit {
 
  
   confirmarViaje() {
+
+    const ultimoId = Number(localStorage.getItem('ultimoId')) || 0;
+    const nuevoId = ultimoId + 1;
+    localStorage.setItem('ultimoId', nuevoId.toString());
+
     const viajeData = {
+      id: nuevoId,
       ubicacionActual: `${this.userLocation?.lat}, ${this.userLocation?.lng}`,
       ubicacionDestino: this.direccion,
       distancia: this.distancia_metros,
@@ -172,7 +178,7 @@ export class MapaConductorPage implements OnInit {
       ruta: JSON.stringify(this.ruta),
       fecha: new Date(),
       nombreConductor: this.usuario?.nom_usuario,
-      asientosDisponibles: 4,
+      asientosDisponibles: this.usuario?.cantidad_asientos,
       tiempoEstimado: this.tiempoMinutos,
       estado: 'Pendiente',
       pasajeros: [],

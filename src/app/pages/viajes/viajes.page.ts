@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
-import { UsuarioService } from 'src/app/services/usuario.service';
+import { UsuarioService, Viaje } from 'src/app/services/usuario.service';
 import { MapaConductorPage } from '../mapa-conductor/mapa-conductor.page'; 
 
 
@@ -77,7 +77,6 @@ export class ViajesPage implements OnInit {
 
   cancelarViaje(){
 
-    this.usuarioService.eliminarViaje
     this.route.navigate(['home/viajes']);
 
   }
@@ -86,6 +85,16 @@ export class ViajesPage implements OnInit {
 
     this.route.navigate(['/home/mapa-conductor-rutas'])
 
+  }
+
+  eliminarviaje(id: number) {
+    this.usuarioService.eliminarDatosViaje(id);
+
+    const viajeConfirmado: Viaje[] = JSON.parse(localStorage.getItem('viajeConfirmado') || '[]');
+    const viajesActualizados = viajeConfirmado.filter(viaje => viaje.id !== id);
+    localStorage.setItem('viajeConfirmado', JSON.stringify(viajesActualizados));
+
+    this.cargarViajes();
   }
 
   

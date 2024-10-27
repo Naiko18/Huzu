@@ -90,7 +90,7 @@ export class UsuarioService {
 
       this.usuarios[rut] = formGroupUsuario;
       this.guardarUsuariosEnLocalStorage(); 
-      console.log('Usuario agregado:', formGroupUsuario.value);
+      //console.log('Usuario agregado:', formGroupUsuario.value);
       return true;
     }
   }
@@ -99,20 +99,20 @@ export class UsuarioService {
     if (this.usuarios[rut]) {
       this.usuarios[rut] = usuarioModificado;
       this.guardarUsuariosEnLocalStorage(); 
-      console.log('Usuario modificado:', usuarioModificado.value);
-    } else {
-      console.log('Usuario no encontrado');
-    }
+      //console.log('Usuario modificado:', usuarioModificado.value);
+    } // else {
+      // console.log('Usuario no encontrado');
+      //}
   }
 
   eliminarUsuario(rut: string): boolean {
     if (this.usuarios[rut]) {
       delete this.usuarios[rut];
       this.guardarUsuariosEnLocalStorage(); 
-      console.log('Usuario eliminado:', rut);
+      //console.log('Usuario eliminado:', rut);
       return true;
     } else {
-      console.log('Usuario no encontrado para eliminar:', rut);
+      //console.log('Usuario no encontrado para eliminar:', rut);
       return false;
     }
   }
@@ -155,57 +155,21 @@ export class UsuarioService {
   private viajes: Viaje[] = [];
   private idCounter: number = 1; 
 
-  agregarViaje(viaje: Omit<Viaje, 'id'>): void {
-    const nuevoViaje: Viaje = {
-        ...viaje,
-        id: this.idCounter++, 
-        estado: 'Pendiente',
-        pasajeros: [], 
-    };
-    this.viajes.push(nuevoViaje);
-    this.guardarViajesEnLocalStorage();
-}
-
-  obtenerViajes(): Viaje[] {
-    return this.viajes;
-  }
-
-  eliminarViaje(id: number): boolean {
-    const viajeIndex = this.viajes.findIndex(viaje => viaje.id === id);
-    if (viajeIndex !== -1) {
-      this.viajes.splice(viajeIndex, 1);
-      this.guardarViajesEnLocalStorage();
-      console.log('Viaje eliminado:', id);
-      return true;
-    } else {
-      console.log('Viaje no encontrado para eliminar:', id);
-      return false;
-    }
-  }
-
-  private guardarViajesEnLocalStorage(): void {
-    localStorage.setItem('viajes', JSON.stringify(this.viajes));
-  }
-
-  private cargarViajesDesdeLocalStorage(): void {
-    const viajesGuardados = localStorage.getItem('viajes');
-    if (viajesGuardados) {
-      this.viajes = JSON.parse(viajesGuardados);
-      this.idCounter = this.viajes.length > 0 ? Math.max(...this.viajes.map(v => v.id)) + 1 : 1; 
-    }
-  }
- 
-  ///////////////////////////////////////////////
- 
-  obtenerDatosViajes(): any[] {
+  obtenerDatosViajes(): Viaje[] {
     const viajes = localStorage.getItem('viajes');
-    return viajes ? JSON.parse(viajes) : [];
+    return viajes ? JSON.parse(viajes) as Viaje[] : [];
   }
 
   guardarDatosViaje(datos: any): void {
     const viajes = this.obtenerDatosViajes(); 
     viajes.push(datos); 
     localStorage.setItem('viajes', JSON.stringify(viajes)); 
+  }
+
+  eliminarDatosViaje(id: number): void {
+    const viajes = this.obtenerDatosViajes();
+    const viajesActualizados = viajes.filter(viaje => viaje.id !== id);
+    localStorage.setItem('viajes', JSON.stringify(viajesActualizados));
   }
 
 
