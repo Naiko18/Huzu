@@ -42,7 +42,7 @@ export function mayorDeEdadValidator(control: AbstractControl): ValidationErrors
 
   return edad >= 18 ? null : { menorDeEdad: true };
 }
-
+ 
 @Injectable({
   providedIn: 'root'
 })
