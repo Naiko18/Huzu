@@ -1,5 +1,9 @@
 # Huzu App 🚗
 
+
+![1](https://github.com/user-attachments/assets/d86e95fe-fa55-47b5-a0ae-06e9ec2fe6df)
+
+
 ## Descripción
 
 Huzu es una innovadora aplicación de transporte diseñada exclusivamente para los estudiantes de Duoc UC, ofreciéndoles una opción confiable, cómoda y segura para desplazarse hacia sus destinos. Con Huzu, no solo disfrutarás de un viaje más seguro/a, sino que también te unirás a una comunidad de usuarios que comparten tu mismo compromiso con la puntualidad y la seguridad. Nuestra plataforma está pensada para facilitar tu vida estudiantil, permitiéndote conectarte fácilmente con otros compañeros y organizar tu trayecto de manera eficiente. ¡Viajar nunca fue tan sencillo y seguro como ahora con Huzu!
