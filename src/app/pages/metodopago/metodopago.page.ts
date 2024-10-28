@@ -23,11 +23,6 @@ export class MetodopagoPage implements OnInit {
     return this.selectedPaymentMethod === 'Tarjeta';
   }
 
-  realizarPago(metodo: string) {
-    console.log('Realizando pago con:', metodo);
-    
-  }
-
   volverPerfil(){
 
     this.route.navigate(['/home/perfil']);
