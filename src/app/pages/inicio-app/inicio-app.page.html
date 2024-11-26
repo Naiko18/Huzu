@@ -36,11 +36,29 @@
       </ion-slides>
 
     </div>
+    
     <div class="start-journey">
       <ion-label (click)="comienzaViaje()">
         <h2>Comienza tu viaje</h2>
         <ion-icon name="arrow-forward-outline" class="arrow-right"></ion-icon>
       </ion-label>
     </div>
+    
+    <div class="opiniones">
+
+      <div *ngIf="usuario; else loading">
+        <img [src]="usuario.picture.medium" alt="Foto de usuario" />
+        <h2>{{ usuario.name.first }} {{ usuario.name.last }}</h2>
+      </div>
+      
+      <ng-template #loading>
+        <p>Cargando usuario...</p>
+      </ng-template>
+  
+  
+  
+  
+    </div>
+  
   </div>
 </ion-content>

@@ -68,6 +68,31 @@
           <ion-label>Cerrar sesión</ion-label>
         </ion-item>
       </ion-list>
+      
+      <br>
+      <ion-menu-toggle>
+      <ion-button color="dark" expand="block" id="main-content"> QR Perfil</ion-button>
+      </ion-menu-toggle>
+      
+      <ion-menu contentId="main-content">
+        <ion-header>
+          <ion-toolbar>
+            <ion-title>Menu Content</ion-title>
+          </ion-toolbar>
+        </ion-header>
+        <ion-content class="ion-padding">
+          
+          <ion-menu-toggle>
+            <ion-button color="dark" expand="block">Cerrar QR</ion-button>
+          </ion-menu-toggle>
+
+          <div style="text-align: center; margin-top: 50px;">
+            <img *ngIf="qrCodeDataUrl" [src]="qrCodeDataUrl" alt="Código QR">
+          </div>
+
+        </ion-content>
+      </ion-menu>
+
 
       <div class="card-container">
         <ion-card class="card-verde" *ngIf="usuario?.tip_user === 'Pasajero'" (click)="irMetodoPago()">
@@ -88,9 +113,8 @@
             <h2>Editar Perfil</h2>
           </ion-card-content>
         </ion-card>
-      
-      
       </div>
+    
     </div>
   </div>
 

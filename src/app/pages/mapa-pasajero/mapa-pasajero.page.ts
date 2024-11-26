@@ -24,7 +24,7 @@ export class MapaPasajeroPage implements OnInit {
   direccion: string = '';
   asientosDisponiblesTemp: number | undefined;
 
-  constructor(private usuarioService: UsuarioService) { }
+  constructor(private usuarioService: UsuarioService, private route: Router) { }
 
   ngOnInit() {
     this.initMap(); 
@@ -154,6 +154,11 @@ export class MapaPasajeroPage implements OnInit {
       });
       localStorage.setItem('viajes', JSON.stringify(viajeActualizado));
     }
+  }
+
+  VolverViajes(){
+    localStorage.removeItem('viajeConfirmado');
+    this.route.navigate(['/home/viajes']);
   }
 
 }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UsuarioService } from '../../services/usuario.service';
 import { FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import * as QRCode from 'qrcode';
 
 @Component({
   selector: 'app-perfil',
@@ -10,13 +11,26 @@ import { Router } from '@angular/router';
 })
 export class PerfilPage implements OnInit {
   usuario: any;
+  qrCodeDataUrl: string = '';
 
-  constructor(private usuarioService: UsuarioService, private route: Router) { }
+  constructor(private usuarioService: UsuarioService, private route: Router ) {
+
+    this.generateQRCode('http://localhost:8100/home/perfil');
+   }
 
   ngOnInit() {
 
     this.usuario = JSON.parse(localStorage.getItem("usuario") || '');
   
+  }
+
+  generateQRCode(data: string) {
+    
+    QRCode.toDataURL(data)
+      .then((url) => {
+        this.qrCodeDataUrl = url; 
+      })
+      .catch((error) => console.error('Error generando el QR:', error));
   }
 
   irConfiguracion() {
@@ -55,6 +69,10 @@ export class PerfilPage implements OnInit {
     this.route.navigate(['/home/editarperfil'])
   }
 
+  irqrPerfil(){
+
+    
+  }
 
 
 }

@@ -1,7 +1,7 @@
 import { Component, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { GestureController } from '@ionic/angular';
-import { UsuarioService } from 'src/app/services/usuario.service';
+import { RandomUserService } from 'src/app/services/random-user.service';
 
 @Component({
   selector: 'app-inicio-app',
@@ -13,7 +13,13 @@ export class InicioAppPage implements AfterViewInit {
 
   usuario: any;
 
-  constructor(private gestureCtrl: GestureController, private route: Router, private usuarioService: UsuarioService) {}
+  constructor(private gestureCtrl: GestureController, private route: Router, private randomUserService: RandomUserService) {}
+
+  ngOnInit(){
+
+    this.obtenerUsuario();
+
+  }
 
   ngAfterViewInit() { 
     const gesture = this.gestureCtrl.create({
@@ -35,6 +41,19 @@ export class InicioAppPage implements AfterViewInit {
     this.route.navigate(['/home/viajes']);
 
   }
+
+  obtenerUsuario() {
+    this.randomUserService.getRandomUser().subscribe({
+      next: (data) => {
+        this.usuario = data.results[0];  
+        console.log("Usuario recibido:", this.usuario); 
+      },
+      error: (err) => {
+        console.error('Error obteniendo usuario:', err);
+      },
+    });
+  }
+
 
 
 
