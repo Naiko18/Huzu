@@ -56,6 +56,10 @@ const routes: Routes = [
         loadChildren: () => import('../editarperfil/editarperfil.module').then( m => m.EditarperfilPageModule)
       },
       {
+        path: 'consumoapi',
+        loadChildren: () => import('../consumoapi/consumoapi.module').then( m => m.ConsumoapiPageModule)
+      },
+      {
         path: '',  
         redirectTo: 'inicio-app',
         pathMatch: 'full' 

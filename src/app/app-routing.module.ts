@@ -77,9 +77,14 @@ const routes: Routes = [
     loadChildren: () => import('./pages/editarperfil/editarperfil.module').then( m => m.EditarperfilPageModule)
   },
   {
+    path: 'consumoapi',
+    loadChildren: () => import('./pages/consumoapi/consumoapi.module').then( m => m.ConsumoapiPageModule)
+  },
+  {
     path: '**',
     loadChildren: () => import('./pages/error404/error404.module').then( m => m.Error404PageModule)
-  }
+  },
+
 
 
 ];

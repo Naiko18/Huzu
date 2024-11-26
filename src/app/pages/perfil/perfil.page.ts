@@ -29,7 +29,7 @@ export class PerfilPage implements OnInit {
   
   cerrarSesion() {
     
-    this.usuarioService.eliminarUsuario
+    localStorage.removeItem('usuario');
     this.route.navigate(['/login']);
   
   }
