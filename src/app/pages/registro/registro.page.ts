@@ -5,6 +5,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { UsuarioService } from 'src/app/services/usuario.service';
 import { AlertController } from '@ionic/angular';
 import { AbstractControl, ValidationErrors } from '@angular/forms';
+import { FirebaseService } from 'src/app/services/firebase.service';
 
 export function mayorDeEdadValidator(control: AbstractControl): ValidationErrors | null {
   
@@ -38,7 +39,7 @@ export class RegistroPage implements OnInit {
   ];
 
 
-  constructor(private route: Router, private usuarioService: UsuarioService, private alertController: AlertController) {
+  constructor(private route: Router, private usuarioService: UsuarioService, private alertController: AlertController, private FirebaseService: FirebaseService) {
 
     this.usuario = new FormGroup({
   
