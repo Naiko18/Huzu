@@ -62,16 +62,9 @@ export class RegistroPage implements OnInit {
   ngOnInit() {
   }
 
-  public usuario_registrado(): void {
-    if (this.usuario.valid) {
-      console.log(this.usuario.value);
-     
-      this.presentAlert("Te has registrado con éxito");
-      this.route.navigate(['/login']);
-    } else {
-      
-      this.presentAlert("Por favor, completa todos los campos correctamente.");
-    }
+  async usuario_registrado(){
+    if(await this.FirebaseService.crearUsuario(this.usuario.value)){
+  }
   }
 
   agregarUsuario() {

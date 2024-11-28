@@ -14,18 +14,18 @@ export class FirebaseService {
   constructor(private fireStore: AngularFirestore, private fireAuth: AngularFireAuth) {}
 
 
-  async crearUsuario(usuarios: any){
-    const docRef = this.fireStore.collection('usuarios').doc(usuarios.rut);
+  async crearUsuario(usuario: any){
+    const docRef = this.fireStore.collection('usuarios').doc(usuario.rut);
     const docActual = await docRef.get().toPromise();
     if(docActual?.exists){
       return false;
     }
-    const credencialesUsuario = await this.fireAuth.createUserWithEmailAndPassword(usuarios.correo,usuarios.contraseña);
+    const credencialesUsuario = await this.fireAuth.createUserWithEmailAndPassword(usuario.correo,usuario.contraseña);
     const uid = credencialesUsuario.user?.uid;
-    await docRef.set( {...usuarios,uid} );
+    await docRef.set( {...usuario,uid} );
     return true;
   }
-  
+   
   getUsuarios(){
     return this.fireStore.collection('usuarios').valueChanges();
   }
