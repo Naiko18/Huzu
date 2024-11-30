@@ -58,11 +58,11 @@
       <div class="titulo">INICIAR SESIÓN</div>
       <div class="subtitulo">Inicie sesión para continuar</div>
 
-      <ion-input [(ngModel)]="nombre_user" type="text" fill="outline" label="Usuario" labelPlacement="floating"></ion-input>
+      <ion-input [(ngModel)]="correo" type="text" fill="outline" label="Correo" labelPlacement="floating"></ion-input>
       <br>
       <ion-input [(ngModel)]="contra_user" type="password" fill="outline" label="Contraseña" labelPlacement="floating"></ion-input>
       <br>
-      <ion-button (click)="ingresarLogin()" color="dark" expand="block">Ingresar</ion-button>
+      <ion-button (click)="login()" color="dark" expand="block">Ingresar</ion-button>
       <br>
       <ion-label class="label1"><a routerLink="/registro">¿No tienes cuenta? Regístrate aquí</a></ion-label>
       <br>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AlertController } from '@ionic/angular';
+import { FirebaseService } from 'src/app/services/firebase.service';
 import { UsuarioService } from 'src/app/services/usuario.service';
 
 @Component({
@@ -10,27 +11,30 @@ import { UsuarioService } from 'src/app/services/usuario.service';
 export class RecuperarPage implements OnInit {
   correo: string | undefined;
 
-  constructor(private alertController: AlertController, private usuarioService: UsuarioService) {}
+  constructor(
+    private alertController: AlertController,
+    private usuarioService: UsuarioService,
+    private firebaseService: FirebaseService
+  ) {}
 
   ngOnInit() {}
 
   async recuperarCuenta() {
-    const usuarios = JSON.parse(localStorage.getItem('usuarios') || '[]');
-    const usuario = usuarios.find((user: any) => user.correo === this.correo);
-
-    if (usuario) {
-      
-      const alert = await this.alertController.create({
-        header: 'Alerta',
-        message: 'Se ha enviado un enlace para recuperar su cuenta a su correo',
-        buttons: ['Aceptar'],
-      });
-      await alert.present();
+    if (this.correo) {
+      try {
+        await this.firebaseService.recuperarContrasena(this.correo);
+      } catch (error) {
+        const alert = await this.alertController.create({
+          header: 'Error',
+          message: 'Hubo un problema al enviar el correo de recuperación.',
+          buttons: ['Aceptar'],
+        });
+        await alert.present();
+      }
     } else {
-      
       const alert = await this.alertController.create({
         header: 'Alerta',
-        message: 'Por favor ingrese un correo válido',
+        message: 'Por favor ingrese un correo válido.',
         buttons: ['Aceptar'],
       });
       await alert.present();

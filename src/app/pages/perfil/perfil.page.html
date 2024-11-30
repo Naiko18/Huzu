@@ -12,7 +12,7 @@
           <img alt="Avatar" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
         </ion-avatar>
         <ion-label>
-          <h2>{{ usuario?.nom_usuario | titlecase }}</h2>
+          <h2>{{ usuario?.nom_usuario | titlecase}}</h2>
           <h3>Usuario desde 2024</h3>
         </ion-label>
       </ion-item>
@@ -25,27 +25,27 @@
       <ion-list>
         <ion-item>
           <ion-icon name="card-outline" slot="start"></ion-icon>
-          <ion-label>RUT: {{ usuario?.rut }}</ion-label>
+          <ion-label>RUT: {{ usuario?.rut}}</ion-label>
         </ion-item>
         <ion-item>
           <ion-icon name="calendar-outline" slot="start"></ion-icon>
-          <ion-label>Fecha de Nacimiento: {{ usuario?.fec_nacimiento }}</ion-label>
+          <ion-label>Fecha de Nacimiento: {{ usuario?.fec_nacimiento}}</ion-label>
         </ion-item>
         <ion-item>
           <ion-icon name="male-female-outline" slot="start"></ion-icon>
-          <ion-label>Género: {{ usuario?.genero | titlecase }}</ion-label>
+          <ion-label>Género: {{ usuario?.genero | titlecase}}</ion-label>
         </ion-item>
         <ion-item>
           <ion-icon name="mail-outline" slot="start"></ion-icon>
-          <ion-label>Correo: {{ usuario?.correo }}</ion-label>
+          <ion-label>Correo: {{ usuario?.correo}}</ion-label>
         </ion-item>
         <ion-item *ngIf="usuario?.tip_user === 'Conductor'">
           <ion-icon name="id-card-outline" slot="start"></ion-icon>
-          <ion-label>Patente: {{ usuario?.patente }}</ion-label>
+          <ion-label>Patente: {{ usuario?.patente}}</ion-label>
         </ion-item>
         <ion-item *ngIf="usuario?.tip_user === 'Conductor'">
           <ion-icon name="car-sport-outline" slot="start"></ion-icon>
-          <ion-label>Modelo vehículo: {{ usuario?.mod_vehi }}</ion-label>
+          <ion-label>Modelo vehículo: {{ usuario?.mod_vehi | titlecase}}</ion-label>
         </ion-item>
       </ion-list>
 

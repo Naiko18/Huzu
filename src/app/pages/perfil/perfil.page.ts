@@ -3,6 +3,7 @@ import { UsuarioService } from '../../services/usuario.service';
 import { FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import * as QRCode from 'qrcode';
+import { FirebaseService } from 'src/app/services/firebase.service';
 
 @Component({
   selector: 'app-perfil',
@@ -11,17 +12,17 @@ import * as QRCode from 'qrcode';
 })
 export class PerfilPage implements OnInit {
   usuario: any;
+  
   qrCodeDataUrl: string = '';
 
-  constructor(private usuarioService: UsuarioService, private route: Router ) {
+  constructor(private usuarioService: UsuarioService, private route: Router, private FirebaseService: FirebaseService ) {
 
     this.generateQRCode('http://localhost:8100/home/perfil');
    }
 
-  ngOnInit() {
-
-    this.usuario = JSON.parse(localStorage.getItem("usuario") || '');
-  
+   ngOnInit() {
+    const usuarioData = JSON.parse(localStorage.getItem('usuario') || '{}');
+    this.usuario = usuarioData; 
   }
 
   generateQRCode(data: string) {
@@ -39,13 +40,6 @@ export class PerfilPage implements OnInit {
   
   verPoliticas() {
     
-  }
-  
-  cerrarSesion() {
-    
-    localStorage.removeItem('usuario');
-    this.route.navigate(['/login']);
-  
   }
 
   irTerminos(){
@@ -69,10 +63,10 @@ export class PerfilPage implements OnInit {
     this.route.navigate(['/home/editarperfil'])
   }
 
-  irqrPerfil(){
-
-    
+  async cerrarSesion() {
+    await this.FirebaseService.fireAuth.signOut();
+    localStorage.removeItem('usuario');
+    this.route.navigate(['/login']);
   }
-
 
 }

@@ -51,7 +51,6 @@ export class UsuarioService {
 
   constructor() {
     this.cargarUsuariosDesdeLocalStorage();
-    this.crearUsuarioPredeterminado();
   }
 
   private crearUsuarioPredeterminado(): void {

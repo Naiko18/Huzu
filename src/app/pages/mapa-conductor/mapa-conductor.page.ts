@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import * as L from 'leaflet';
 import * as G from 'leaflet-control-geocoder';
 import 'leaflet-routing-machine';
+import { FirebaseService } from 'src/app/services/firebase.service';
 import { UsuarioService } from 'src/app/services/usuario.service';
 
 @Component({
@@ -40,7 +41,10 @@ export class MapaConductorPage implements OnInit {
 
 
 
-  constructor(private usuarioService: UsuarioService, private router: Router) {}
+  constructor(private usuarioService: UsuarioService, 
+              private router: Router,
+              private firebaseService: FirebaseService
+              ) {}
 
   ngOnInit() {
     this.initMap();
@@ -185,6 +189,7 @@ export class MapaConductorPage implements OnInit {
       costoTotal: this.costoTotal.toFixed(2),
     };
 
+    this.firebaseService.guardarDatosViaje(viajeData);
     this.usuarioService.guardarDatosViaje(viajeData);
     localStorage.setItem('viajeConfirmado', JSON.stringify(viajeData));
     this.router.navigate(['/home/viajes']);

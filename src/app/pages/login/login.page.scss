@@ -34,3 +34,10 @@ ion-img{
     margin-left: auto;
     margin-right: auto; 
 }
+
+ion-loading.custom-loading {
+    --background: #ffffff;
+    --spinner-color: #000000;
+  
+    color: #000000;
+  }

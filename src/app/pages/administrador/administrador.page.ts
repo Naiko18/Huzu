@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, ValidatorFn } from '@angular/forms';
 import { UsuarioService } from 'src/app/services/usuario.service';
 import { AbstractControl, ValidationErrors } from '@angular/forms';
+import { FirebaseService } from 'src/app/services/firebase.service';
 
 export function mayorDeEdadValidator(control: AbstractControl): ValidationErrors | null {
   const fechaNacimiento = new Date(control.value);
@@ -23,13 +24,13 @@ export function mayorDeEdadValidator(control: AbstractControl): ValidationErrors
 export class AdministradorPage implements OnInit {
 
   usuario: FormGroup; 
-  usuarios: FormGroup[] = []; 
+  usuarios: FormGroup<any>[] = []; 
   showAlert = false;
   tieneVehiculo: boolean = false;
   isEditing: boolean = false;
   editingUsuario: FormGroup | null = null;
 
-  constructor(private usuarioService: UsuarioService) { 
+  constructor(private usuarioService: UsuarioService, private firebaseService: FirebaseService) { 
     this.usuario = new FormGroup({
   
       nom_usuario: new FormControl('',[Validators.required,Validators.pattern("[a-z]{3,10}")]),
@@ -54,29 +55,33 @@ export class AdministradorPage implements OnInit {
 
   agregarUsuario() {
     if (this.usuario.valid) {
-        const exito = this.usuarioService.agregarUsuario(this.usuario.value);
+      this.firebaseService.crearUsuario(this.usuario.value).then(exito => {
         if (exito) {
-            this.obtenerUsuarios(); 
-            this.resetForm();
+          this.obtenerUsuarios();
+          this.resetForm();
+        } else {
+          console.log('El usuario ya existe.');
         }
+      }).catch(error => {
+        console.log('Error al agregar usuario:', error);
+      });
     } else {
-        console.log('Formulario no válido:', this.usuario.errors);
+      console.log('Formulario no válido:', this.usuario.errors);
     }
   }
 
   deleteUsuario(rut: string) {
-    const result = this.usuarioService.eliminarUsuario(rut);
-    if (result) {
+    this.firebaseService.deleteUsuario(rut).then(() => {
       console.log('Usuario eliminado:', rut);
       this.obtenerUsuarios();
-    } else {
-      console.log('Usuario no encontrado para eliminar:', rut);
-    }
+    }).catch(error => {
+      console.log('Error al eliminar usuario:', error);
+    });
   }
 
   editUsuario(usuario: FormGroup) {
     this.editingUsuario = usuario;
-    this.isEditing = true; 
+    this.isEditing = true;
     this.usuario.patchValue({
       nom_usuario: usuario.get('nom_usuario')?.value,
       contraseña: usuario.get('contraseña')?.value,
@@ -92,10 +97,13 @@ export class AdministradorPage implements OnInit {
   
   confirmEdit() {
     if (this.editingUsuario) {
-      this.usuarioService.modificarUsuario(this.editingUsuario.get('rut')?.value, this.usuario);
-      this.isEditing = false; 
-      this.editingUsuario = null; 
-      this.obtenerUsuarios();
+      this.firebaseService.updateUsuario(this.editingUsuario.value).then(() => {
+        this.isEditing = false;
+        this.editingUsuario = null;
+        this.obtenerUsuarios();
+      }).catch(error => {
+        console.log('Error al editar usuario:', error);
+      });
     }
   }
 
@@ -110,10 +118,6 @@ export class AdministradorPage implements OnInit {
 
   resetForm() {
     this.usuario.reset();
-  }
-
-  obtenerUsuarios() {
-    this.usuarios = this.usuarioService.obtenerUsuarios();
   }
 
   validarRut(): ValidatorFn {
@@ -175,6 +179,32 @@ export class AdministradorPage implements OnInit {
         return null;
       }
     };
+  }
+
+  obtenerUsuarios() {
+    this.firebaseService.getUsuarios().subscribe(usuarios => {
+      
+      this.usuarios = usuarios.map(usuario => this.crearFormulario(usuario));
+    }, error => {
+      console.log('Error al obtener usuarios:', error);
+    });
+  }
+  
+  crearFormulario(usuario: any): FormGroup {
+    return new FormGroup({
+      nom_usuario: new FormControl(usuario.nom_usuario),
+      contraseña: new FormControl(usuario.contraseña),
+      rep_contraseña: new FormControl(usuario.rep_contraseña),
+      correo: new FormControl(usuario.correo),
+      rut: new FormControl(usuario.rut),
+      fec_nacimiento: new FormControl(usuario.fec_nacimiento),
+      genero: new FormControl(usuario.genero),
+      pos_vehiculo: new FormControl(usuario.pos_vehiculo),
+      patente: new FormControl(usuario.patente),
+      cantidad_asientos: new FormControl(usuario.cantidad_asientos),
+      mod_vehi: new FormControl(usuario.mod_vehi),
+      tip_user: new FormControl(usuario.tip_user)
+    });
   }
 
 

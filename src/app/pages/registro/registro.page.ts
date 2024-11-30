@@ -63,8 +63,10 @@ export class RegistroPage implements OnInit {
   }
 
   async usuario_registrado(){
+    
     if(await this.FirebaseService.crearUsuario(this.usuario.value)){
-  }
+      this.usuario.reset();
+    }
   }
 
   agregarUsuario() {
