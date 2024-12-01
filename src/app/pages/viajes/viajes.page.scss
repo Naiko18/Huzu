@@ -105,3 +105,13 @@ ion-content::part(background){
 
   }
 
+  ion-img {
+    display: block;
+    margin: 0 auto;
+    object-fit: contain;
+    position: absolute;
+    text-align: center;
+    padding-top: 50%;
+  }
+
+

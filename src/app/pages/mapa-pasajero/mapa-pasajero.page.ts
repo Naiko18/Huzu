@@ -141,7 +141,7 @@ export class MapaPasajeroPage implements OnInit {
       }
     }
   }
-
+ 
   public reservarAsiento() {
     if (this.viaje && this.viaje.id && this.asientosDisponiblesTemp && this.asientosDisponiblesTemp > 0) {
       this.asientosDisponiblesTemp--; 

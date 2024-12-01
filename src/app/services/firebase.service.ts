@@ -8,12 +8,12 @@ import { Viaje } from './usuario.service';
 @Injectable({
   providedIn: 'root'
 })
-
+ 
 
 export class FirebaseService {
   
 
-  constructor(private fireStore: AngularFirestore, public fireAuth: AngularFireAuth, private alertController: AlertController) {}
+  constructor(public fireStore: AngularFirestore, public fireAuth: AngularFireAuth, private alertController: AlertController) {}
 
   async crearUsuario(usuario: any){
     const docRef = this.fireStore.collection('usuarios').doc(usuario.rut);
@@ -105,15 +105,12 @@ export class FirebaseService {
   }
 
   guardarDatosViaje(datos: any): void {
-    
-    const id = this.fireStore.createId(); 
-    const nuevoViaje = { id, ...datos };
-
-    
+    const id = datos.id;  
+  
     this.fireStore
       .collection('viajes')
-      .doc(id)
-      .set(nuevoViaje)
+      .doc(id) 
+      .set(datos)
       .then(() => console.log('Viaje guardado exitosamente'))
       .catch(error => console.error('Error al guardar el viaje:', error));
   }

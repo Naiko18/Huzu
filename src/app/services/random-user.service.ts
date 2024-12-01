@@ -13,4 +13,7 @@ export class RandomUserService {
   getRandomUser(): Observable<any> {
     return this.http.get(this.apiUrl);
   }
+
+
+
 }

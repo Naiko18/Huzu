@@ -152,7 +152,7 @@ export class MapaConductorRutasPage implements OnInit {
         viajesGuardados[viajeIndex] = this.viaje;
         localStorage.setItem('viajes', JSON.stringify(viajesGuardados)); 
     } 
-}
+} 
 
 public iniciarViaje() {
     

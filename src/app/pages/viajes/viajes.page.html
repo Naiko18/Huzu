@@ -41,18 +41,26 @@
                 <ion-icon slot="start" name="cash"></ion-icon>
                 <ion-label>Costo: {{ viaje.costoTotal | currency:'CLP' }}</ion-label>
               </ion-item>
+              <!--
               <ion-item>
                 <ion-icon slot="start" name="person"></ion-icon>
                 <ion-label>Asientos Disponibles: {{ viaje.asientosDisponibles }}</ion-label>
               </ion-item>
+              -->
             </ion-list>
             <br>
             <br>
-            <div class="botones">
-              <ion-button (click)="irmapaUsuario()" *ngIf="usuario?.tip_user === 'Pasajero'" color="dark" size="default" [disabled]="viaje.asientosDisponibles === 0">Tomar viaje</ion-button>
+            <div class="botones"> 
+              <ion-button (click)="reservarAsiento()" *ngIf="usuario?.tip_user === 'Pasajero'" color="dark" size="default" [disabled]="botonDeshabilitado">Tomar viaje</ion-button>
+              <!--
               <ion-button *ngIf="usuario?.tip_user === 'Conductor'" color="dark" size="default" (click)="verViaje()">Ver viaje</ion-button>
-              <ion-button *ngIf="usuario?.tip_user === 'Administrador'" color="danger" size="default" (click)="eliminarviaje(viaje.id)">Eliminar viaje</ion-button>
-              <ion-button *ngIf="usuario?.tip_user === 'Conductor'" color="danger" size="default" (click)="cancelarViaje()">Cancelar viaje</ion-button>
+              -->
+              <ion-button *ngIf="usuario?.tip_user === 'administrador'" color="danger" size="default" (click)="eliminarviaje(viaje.id)">Eliminar viaje</ion-button>
+              <!--
+              <ion-button *ngIf="usuario?.tip_user === 'Conductor'" color="danger" size="default" (click)="eliminarviaje(viaje.id)">Cancelar viaje</ion-button>
+              -->
+              <ion-button *ngIf="usuario?.tip_user === 'Conductor'" class="confirmar-destino" color="dark" (click)="iniciarViaje()" size="default">Iniciar Viaje</ion-button>
+              <ion-button *ngIf="usuario?.tip_user === 'Conductor'" class="confirmar-destino" color="danger" (click)="finalizarViaje()" size="default">Finalizar Viaje</ion-button>
             </div>
           </ion-content>
         </ng-template>
@@ -61,7 +69,8 @@
   </div>
 
   <ng-template #noViajes>
-    <p>No hay viajes disponibles.</p>
+    <ion-img
+      src="assets/noviajes.png" class="animate__animated animate__zoomInDown"></ion-img>
   </ng-template>
 
   <ion-button *ngIf="usuario?.tip_user === 'Conductor'" (click)="irmapaConductor()" class="crear-viaje" color="dark" expand="block">Crear Viaje</ion-button>

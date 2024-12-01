@@ -168,11 +168,9 @@ export class MapaConductorPage implements OnInit {
 
  
   confirmarViaje() {
-
-    const ultimoId = Number(localStorage.getItem('ultimoId')) || 0;
-    const nuevoId = ultimoId + 1;
-    localStorage.setItem('ultimoId', nuevoId.toString());
-
+    
+    const nuevoId = this.firebaseService.fireStore.createId();
+  
     const viajeData = {
       id: nuevoId,
       ubicacionActual: `${this.userLocation?.lat}, ${this.userLocation?.lng}`,
@@ -188,10 +186,14 @@ export class MapaConductorPage implements OnInit {
       pasajeros: [],
       costoTotal: this.costoTotal.toFixed(2),
     };
-
+  
+    
     this.firebaseService.guardarDatosViaje(viajeData);
-    this.usuarioService.guardarDatosViaje(viajeData);
+  
+    
     localStorage.setItem('viajeConfirmado', JSON.stringify(viajeData));
+  
+    
     this.router.navigate(['/home/viajes']);
   }
 

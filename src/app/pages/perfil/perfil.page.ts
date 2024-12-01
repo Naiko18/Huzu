@@ -12,7 +12,7 @@ import { FirebaseService } from 'src/app/services/firebase.service';
 })
 export class PerfilPage implements OnInit {
   usuario: any;
-  
+  covidData: any;
   qrCodeDataUrl: string = '';
 
   constructor(private usuarioService: UsuarioService, private route: Router, private FirebaseService: FirebaseService ) {
@@ -68,5 +68,6 @@ export class PerfilPage implements OnInit {
     localStorage.removeItem('usuario');
     this.route.navigate(['/login']);
   }
+  
 
 }
