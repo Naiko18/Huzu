@@ -12,13 +12,14 @@ export class InicioAppPage implements AfterViewInit {
   @ViewChild('slides', { static: false }) slides!: ElementRef;
 
   usuario: any;
+  datoCuriosoGato: string = '';
 
   constructor(private gestureCtrl: GestureController, private route: Router, private randomUserService: RandomUserService) {}
 
   ngOnInit(){
 
     this.obtenerUsuario();
-
+    this.obtenerDatoCurioso();
   }
 
   ngAfterViewInit() { 
@@ -54,6 +55,17 @@ export class InicioAppPage implements AfterViewInit {
     });
   }
 
+  obtenerDatoCurioso() {
+    this.randomUserService.obtenerDatoCuriosoGato().subscribe({
+      next: (data) => {
+        this.datoCuriosoGato = data.fact;
+        console.log('Dato curioso recibido:', this.datoCuriosoGato);
+      },
+      error: (err) => {
+        console.error('Error obteniendo dato curioso:', err);
+      },
+    });
+  }
 
 
 

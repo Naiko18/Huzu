@@ -15,9 +15,9 @@ export class PerfilPage implements OnInit {
   covidData: any;
   qrCodeDataUrl: string = '';
 
-  constructor(private usuarioService: UsuarioService, private route: Router, private FirebaseService: FirebaseService ) {
+  constructor(private usuarioService: UsuarioService, public route: Router, public FirebaseService: FirebaseService ) {
 
-    this.generateQRCode('http://localhost:8100/home/perfil');
+    this.generateQRCode('https://huzuaplicacion.web.app/registro');
    }
 
    ngOnInit() {

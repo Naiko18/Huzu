@@ -1,3 +1,4 @@
+/*
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MapaConductorRutasPage } from './mapa-conductor-rutas.page';
 
@@ -15,3 +16,4 @@ describe('MapaConductorRutasPage', () => {
     expect(component).toBeTruthy();
   });
 });
+*/

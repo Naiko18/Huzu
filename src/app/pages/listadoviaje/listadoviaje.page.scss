@@ -2,7 +2,7 @@
     ion-header {
         display: none;
     }
-
+ 
     .custom-button {
     --background: #1c2120;
     --color: white;
@@ -39,5 +39,14 @@
     p {
       margin: 0;
       font-size: 0.9rem;
+    }
+
+    ion-img {
+      display: block;
+      margin: 0 auto;
+      object-fit: contain;
+      position: absolute;
+      text-align: center;
+      padding-top: 80%;
     }
   }

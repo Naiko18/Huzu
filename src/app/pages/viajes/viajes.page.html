@@ -7,7 +7,7 @@
 <ion-content class="ion-padding">
   <div *ngIf="viajes.length > 0; else noViajes">
     <div *ngFor="let viaje of viajes">
-      <ion-button class="custom-button" expand="block" id="open-modal-{{ viaje.id }}" color="dark">
+      <ion-button class="custom-button" expand="block" id="open-modal-{{ viaje.id }}" color="medium">
         <div class="button-content">
           <div class="left-section">
             <h2>{{ viaje.ubicacionDestino }}</h2>

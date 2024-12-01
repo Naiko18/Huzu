@@ -7,9 +7,7 @@
 <ion-content>
   <div class="container">
     <ion-img style="height: 120px; width: auto;" src="assets/huzu.png"></ion-img>
-
-    <div class="rectangulo">
-      <style>
+    <style>
         .rectangulo {
           width: 100vw;
           height: 70vh;
@@ -53,24 +51,24 @@
           font-size: 14px;
           margin-bottom: 10px;
         }
-      </style>
-
+    </style>
+    <div class="rectangulo">
       <div class="titulo">Cambio de contraseña</div>
       <div class="subtitulo">Por favor, a continuación ingrese su nueva contraseña.</div>
       
       <ion-card-content>
-       
         <form [formGroup]="usuario">
           <br>
-          <ion-input formControlName="contraseña" type="password" fill="outline" label="Contraseña" labelPlacement="floating" errorText="Formato inválido"></ion-input>
+          <ion-input formControlName="contraseña" type="password" fill="outline" label="Contraseña" labelPlacement="floating"></ion-input>
           <br>
-          <ion-input formControlName="rep_contraseña" type="password" fill="outline" label="Repetir Contraseña" labelPlacement="floating" errorText="Formato inválido"></ion-input>
+          <ion-input formControlName="rep_contraseña" type="password" fill="outline" label="Repetir Contraseña" labelPlacement="floating"></ion-input>
           <br>
 
-          
-          <ion-button color="dark" expand="block">Cambiar Contraseña</ion-button>
+          <ion-button color="dark" expand="block" type="submit" [disabled]="usuario.invalid" (click)="cambiarContrasena()">Cambiar Contraseña</ion-button>
         </form>
       </ion-card-content>
     </div>
   </div>
+
+  <ion-loading *ngIf="loading" message="Cambiando contraseña..."></ion-loading>
 </ion-content>

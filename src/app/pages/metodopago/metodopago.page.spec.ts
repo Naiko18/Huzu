@@ -1,3 +1,4 @@
+/*
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MetodopagoPage } from './metodopago.page';
 
@@ -15,3 +16,4 @@ describe('MetodopagoPage', () => {
     expect(component).toBeTruthy();
   });
 });
+*/

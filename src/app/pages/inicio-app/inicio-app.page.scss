@@ -131,4 +131,13 @@ ion-slides .swiper-pagination {
     display: block;
     text-align: center;
     padding-top: 10%;
+    color: black;
+  }
+
+  .foto-usuario {
+    width: 100px;      
+    height: 100px;      
+    border-radius: 50%; 
+    border: 3px solid black;
+    object-fit: cover;  
   }

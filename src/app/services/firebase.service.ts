@@ -64,13 +64,14 @@ export class FirebaseService {
   deleteUsuario(rut: string){
     return this.fireStore.collection('usuarios').doc(rut).delete();
   }
+  
 
   async recuperarContrasena(email: string): Promise<void> {
     try {
       await this.fireAuth.sendPasswordResetEmail(email);
       const alert = await this.alertController.create({
         header: 'Éxito',
-        message: 'Se ha enviado un correo para recuperar tu contraseña.',
+        message: 'Se ha enviado un correo para restablecer tu contraseña.',
         buttons: ['OK'],
       });
       await alert.present();
@@ -84,7 +85,7 @@ export class FirebaseService {
     }
   }
 
-  private obtenerMensajeError(codigo: string): string {
+  obtenerMensajeError(codigo: string): string {
     switch (codigo) {
       case 'auth/user-not-found':
         return 'No existe un usuario con este correo.';
@@ -95,6 +96,27 @@ export class FirebaseService {
     }
   }
 
+  async actualizarContrasenaFirestore(correo: string, nuevaContrasena: string): Promise<void> {
+    try {
+      const usuariosRef = this.fireStore.collection('usuarios', ref => ref.where('correo', '==', correo));
+      const snapshot = await usuariosRef.get().toPromise();
+  
+      if (snapshot && !snapshot.empty) {
+        const doc = snapshot.docs[0];
+        await doc.ref.update({
+          contraseña: nuevaContrasena,
+          rep_contraseña: nuevaContrasena // Actualiza ambos campos
+        });
+        console.log('Contraseña actualizada en Firestore');
+      } else {
+        console.error('Usuario no encontrado en Firestore');
+        throw new Error('Usuario no encontrado en Firestore');
+      }
+    } catch (error) {
+      console.error('Error al actualizar contraseña en Firestore:', error);
+      throw new Error('Error al actualizar la contraseña en Firestore');
+    }
+  }
    // ------------------ viajes
 
    private idCounter: number = 1;

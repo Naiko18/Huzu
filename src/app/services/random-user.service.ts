@@ -7,6 +7,8 @@ import { Observable } from 'rxjs';
 })
 export class RandomUserService {
   private apiUrl = 'https://randomuser.me/api/';
+  
+  private catFactsUrl = 'https://catfact.ninja/fact';
 
   constructor(private http: HttpClient) {}
 
@@ -14,6 +16,9 @@ export class RandomUserService {
     return this.http.get(this.apiUrl);
   }
 
-
+  obtenerDatoCuriosoGato(): Observable<any> {
+    return this.http.get(this.catFactsUrl);
+  }
+  
 
 }

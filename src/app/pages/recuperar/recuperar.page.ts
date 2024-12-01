@@ -22,6 +22,8 @@ export class RecuperarPage implements OnInit {
   async recuperarCuenta() {
     if (this.correo) {
       try {
+        localStorage.setItem('correoRecuperacion', this.correo);
+        
         await this.firebaseService.recuperarContrasena(this.correo);
       } catch (error) {
         const alert = await this.alertController.create({

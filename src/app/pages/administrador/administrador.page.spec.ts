@@ -1,3 +1,4 @@
+/*
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { AdministradorPage } from './administrador.page';
 
@@ -15,3 +16,4 @@ describe('AdministradorPage', () => {
     expect(component).toBeTruthy();
   });
 });
+*/

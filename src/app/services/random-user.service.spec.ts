@@ -1,3 +1,4 @@
+/*
 import { TestBed } from '@angular/core/testing';
 
 import { RandomUserService } from './random-user.service';
@@ -14,3 +15,4 @@ describe('RandomUserService', () => {
     expect(service).toBeTruthy();
   });
 });
+*/

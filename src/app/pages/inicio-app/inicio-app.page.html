@@ -45,19 +45,31 @@
     </div>
     
     <div class="opiniones">
-
-      <div *ngIf="usuario; else loading">
-        <img [src]="usuario.picture.medium" alt="Foto de usuario" />
-        <h2>{{ usuario.name.first }} {{ usuario.name.last }}</h2>
-      </div>
-      
-      <ng-template #loading>
-        <p>Cargando usuario...</p>
-      </ng-template>
-  
-  
-  
-  
+      <ion-card>
+        <ion-card-header>
+          <div *ngIf="usuario; else loading">
+            <img [src]="usuario.picture.medium" alt="Foto de usuario"  class="foto-usuario"/>
+            <h2>{{ usuario.name.first }} {{ usuario.name.last }}</h2>
+          </div>
+        </ion-card-header>
+    
+        <ion-card-content>
+          <ng-template #loading>
+            <p>Cargando usuario...</p>
+          </ng-template>
+    
+          <!-- Dato curioso sobre gatos -->
+          <div *ngIf="datoCuriosoGato">
+            <h3>Dato Curioso sobre los Gatos:</h3>
+            <p>{{ datoCuriosoGato }}</p>
+          </div>
+    
+          <!-- Si no se ha cargado el dato curioso -->
+          <div *ngIf="!datoCuriosoGato">
+            <p>Obteniendo dato curioso sobre gatos...</p>
+          </div>
+        </ion-card-content>
+      </ion-card>
     </div>
   
   </div>
