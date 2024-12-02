@@ -5,6 +5,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { UsuarioService } from 'src/app/services/usuario.service';
 import { AlertController } from '@ionic/angular';
 import { AbstractControl, ValidationErrors } from '@angular/forms';
+import { FirebaseService } from 'src/app/services/firebase.service';
 
 export function mayorDeEdadValidator(control: AbstractControl): ValidationErrors | null {
   
@@ -39,7 +40,7 @@ export class EditarperfilPage implements OnInit {
   isEditing: boolean = false;
   editingUsuario: FormGroup | null = null;
 
-  constructor(private route: Router, private usuarioService: UsuarioService, private alertController: AlertController) {
+  constructor(private route: Router, private usuarioService: UsuarioService, private alertController: AlertController, private firebaseService: FirebaseService) {
 
     this.usuario = new FormGroup({
 
@@ -57,7 +58,7 @@ export class EditarperfilPage implements OnInit {
       tip_user: new FormControl('', [])
     }, { validators: this.passwordsMatchValidator('contraseña', 'rep_contraseña') });
    }
-
+ 
   ngOnInit() {
     this.obtenerUsuarios()
   }
@@ -146,7 +147,7 @@ export class EditarperfilPage implements OnInit {
     };
   }
 
-
+ 
   obtenerUsuarios() {
     const usuarioData = localStorage.getItem('usuario');
     if (usuarioData) {
@@ -171,31 +172,15 @@ export class EditarperfilPage implements OnInit {
 
   guardarCambios() {
     if (this.usuario.valid) {
-        const usuarioActualizado = this.usuario.value;
-
-        localStorage.setItem('usuario', JSON.stringify(usuarioActualizado));
-
-        
-        const usuariosStr = localStorage.getItem('usuarios');
-        const usuarios = usuariosStr ? JSON.parse(usuariosStr) : []; 
-
-       
-        const index = usuarios.findIndex((u: any) => u.rut === usuarioActualizado.rut);
-        if (index !== -1) {
-            usuarios.splice(index, 1); 
-        }
-
-       
-        usuarios.push(usuarioActualizado);
-
-        
-        localStorage.setItem('usuarios', JSON.stringify(usuarios));
-
-        this.presentAlert("Datos modificados con éxito");
+      const usuarioActualizado = this.usuario.value;
+      this.firebaseService.updateUsuario(usuarioActualizado)
+        .then(() => this.presentAlert('Datos modificados con éxito'))
+        .catch((error) => this.presentAlert('Error al guardar cambios'));
     } else {
-        this.presentAlert("Por favor, corrige los errores en el formulario.");
+      this.presentAlert('Por favor, corrige los errores en el formulario.');
     }
-    this.route.navigate(['/home/perfil'])
+    this.route.navigate(['/home/perfil']);
+  }
 }
 
-}
+

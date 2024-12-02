@@ -78,13 +78,15 @@ export class AdministradorPage implements OnInit {
       console.log('Error al eliminar usuario:', error);
     });
   }
-
+ 
   editUsuario(usuario: FormGroup) {
     this.editingUsuario = usuario;
     this.isEditing = true;
+  
     this.usuario.patchValue({
       nom_usuario: usuario.get('nom_usuario')?.value,
       contraseña: usuario.get('contraseña')?.value,
+      rep_contraseña: usuario.get('rep_contraseña')?.value, // Agregado
       correo: usuario.get('correo')?.value,
       rut: usuario.get('rut')?.value,
       fec_nacimiento: usuario.get('fec_nacimiento')?.value,
@@ -92,18 +94,25 @@ export class AdministradorPage implements OnInit {
       pos_vehiculo: usuario.get('pos_vehiculo')?.value,
       patente: usuario.get('patente')?.value,
       cantidad_asientos: usuario.get('cantidad_asientos')?.value,
+      mod_vehi: usuario.get('mod_vehi')?.value, // Agregado
+      tip_user: usuario.get('tip_user')?.value // Agregado
     });
   }
   
   confirmEdit() {
-    if (this.editingUsuario) {
-      this.firebaseService.updateUsuario(this.editingUsuario.value).then(() => {
+    if (this.usuario.valid) {
+      console.log('Datos a actualizar:', this.usuario.value);
+      this.firebaseService.updateUsuario(this.usuario.value).then(() => {
+        console.log('Usuario actualizado exitosamente.');
         this.isEditing = false;
         this.editingUsuario = null;
+        this.resetForm();
         this.obtenerUsuarios();
       }).catch(error => {
         console.log('Error al editar usuario:', error);
       });
+    } else {
+      console.log('El formulario no es válido:', this.usuario.errors);
     }
   }
 
